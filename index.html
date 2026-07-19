@@ -66,132 +66,282 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* ===== NAVIGATION ===== */
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(12px);
-            z-index: 1000;
-            border-bottom: 1px solid rgba(226, 232, 240, 0.6);
-            transition: all 0.3s ease;
-        }
-        .navbar.scrolled {
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
-        }
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 70px;
-        }
-        .nav-logo {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: #0f172a;
-            text-decoration: none;
-            letter-spacing: -0.5px;
-        }
-        .nav-logo span {
-            color: #3b82f6;
-        }
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-        .nav-link {
-            color: #475569;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.9rem;
-            transition: color 0.3s;
-            position: relative;
-        }
-        .nav-link:hover,
-        .nav-link.active {
-            color: #3b82f6;
-        }
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: #3b82f6;
-            transition: width 0.3s;
-        }
-        .nav-link:hover::after,
-        .nav-link.active::after {
-            width: 100%;
-        }
+       /* ===== NAVIGATION ===== */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    z-index: 1000;
+    border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+    transition: all 0.3s ease;
+}
 
-        /* ===== HAMBURGER MENU ===== */
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            gap: 5px;
-            padding: 4px;
-            z-index: 1001;
-        }
+.navbar.scrolled {
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
+}
 
-        .hamburger .bar {
-            width: 28px;
-            height: 2.5px;
-            background: #0f172a;
-            border-radius: 2px;
-            transition: 0.3s ease;
-        }
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+}
 
-        .hamburger.active .bar:nth-child(2) {
-            opacity: 0;
-            transform: translateX(-10px);
-        }
+.nav-logo {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #0f172a;
+    text-decoration: none;
+    letter-spacing: -0.5px;
+    z-index: 1001;
+}
 
-        .hamburger.active .bar:nth-child(1) {
-            transform: translateY(7.5px) rotate(45deg);
-        }
+.nav-logo span {
+    color: #3b82f6;
+}
 
-        .hamburger.active .bar:nth-child(3) {
-            transform: translateY(-7.5px) rotate(-45deg);
-        }
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
 
-        .nav-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.3);
-            z-index: 999;
-            backdrop-filter: blur(4px);
-        }
+.nav-link {
+    color: #475569;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+    position: relative;
+}
 
-        .nav-overlay.active {
-            display: block;
-        }
+.nav-link:hover,
+.nav-link.active {
+    color: #3b82f6;
+}
 
-        .nav-menu .close-btn {
-            display: none;
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            font-size: 1.5rem;
-            color: #0f172a;
-            cursor: pointer;
-            background: none;
-            border: none;
-            padding: 8px;
-            line-height: 1;
-        }
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #3b82f6;
+    transition: width 0.3s;
+}
 
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+/* ===== HAMBURGER ICON ===== */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+    padding: 4px;
+    z-index: 1001;
+}
+
+.hamburger .bar {
+    width: 28px;
+    height: 2.5px;
+    background: #0f172a;
+    border-radius: 2px;
+    transition: 0.3s ease;
+}
+
+/* ===== HAMBURGER ANIMATION ===== */
+.hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+    transform: translateX(-10px);
+}
+
+.hamburger.active .bar:nth-child(1) {
+    transform: translateY(7.5px) rotate(45deg);
+}
+
+.hamburger.active .bar:nth-child(3) {
+    transform: translateY(-7.5px) rotate(-45deg);
+}
+
+/* ===== OVERLAY ===== */
+.nav-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 999;
+    backdrop-filter: blur(4px);
+}
+
+.nav-overlay.active {
+    display: block;
+}
+
+/* ===== CLOSE BUTTON ===== */
+.nav-menu .close-btn {
+    display: none;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 1.8rem;
+    color: #0f172a;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 8px;
+    line-height: 1;
+    z-index: 1002;
+}
+
+.nav-menu .close-btn:hover {
+    color: #3b82f6;
+}
+
+/* ============================================================
+RESPONSIVE - TABLET & MOBILE
+============================================================ */
+
+/* ===== TABLET & IPAD (max-width: 992px) ===== */
+@media (max-width: 992px) {
+    /* Tampilkan hamburger */
+    .hamburger {
+        display: flex !important;
+    }
+
+    /* Tampilkan close button */
+    .nav-menu .close-btn {
+        display: block !important;
+    }
+
+    /* Nav menu: slide from right */
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 280px;
+        height: 100vh;
+        background: #ffffff;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1.5rem;
+        padding: 2rem 2rem 2rem 2rem;
+        transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.08);
+        z-index: 1000;
+        overflow-y: auto;
+    }
+
+    .nav-menu.active {
+        right: 0;
+    }
+
+    .nav-link {
+        font-size: 1.1rem;
+        padding: 0.5rem 1rem;
+        display: block;
+        text-align: center;
+        width: 100%;
+    }
+
+    .nav-link::after {
+        display: none;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+        background: #f1f5f9;
+        border-radius: 8px;
+    }
+
+    .nav-logo {
+        z-index: 1001;
+    }
+}
+
+/* ===== MOBILE (max-width: 480px) ===== */
+@media (max-width: 480px) {
+    .nav-menu {
+        width: 100%;
+        right: -100%;
+        padding: 2rem 1.5rem;
+    }
+
+    .nav-menu.active {
+        right: 0;
+    }
+
+    .nav-link {
+        font-size: 1rem;
+        padding: 0.4rem 0.8rem;
+    }
+
+    .nav-container {
+        padding: 0 1rem;
+        height: 60px;
+    }
+
+    .nav-logo {
+        font-size: 1rem;
+    }
+
+    .hamburger .bar {
+        width: 24px;
+        height: 2px;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(6px) rotate(45deg);
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-6px) rotate(-45deg);
+    }
+
+    .nav-menu .close-btn {
+        font-size: 1.5rem;
+        top: 15px;
+        right: 15px;
+    }
+}
+
+/* ===== VERY SMALL PHONES (max-width: 380px) ===== */
+@media (max-width: 380px) {
+    .nav-menu {
+        padding: 1.5rem 1rem;
+    }
+
+    .nav-link {
+        font-size: 0.9rem;
+        padding: 0.3rem 0.6rem;
+    }
+
+    .hamburger .bar {
+        width: 20px;
+        height: 1.8px;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(5px) rotate(45deg);
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-5px) rotate(-45deg);
+    }
+}
         /* ===== HERO ===== */
         .hero {
             min-height: 100vh;
@@ -1284,32 +1434,32 @@
         <div class="loading-spinner"></div>
     </div>
 
-    <!-- ===== NAVIGATION ===== -->
-    <nav class="navbar" id="navbar">
-        <div class="nav-container">
-            <a href="#home" class="nav-logo">Syawal<span>.</span></a>
-            <ul class="nav-menu" id="nav-menu">
-                <li class="nav-item"><a href="#home" class="nav-link active">Home</a></li>
-                <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
-                <li class="nav-item"><a href="#resume" class="nav-link">Resume</a></li>
-                <li class="nav-item"><a href="#achievements" class="nav-link">Achievements</a></li>
-                <li class="nav-item"><a href="#dashboards" class="nav-link">Dashboards</a></li>
-                <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
-                <li class="nav-item"><a href="#testimonials" class="nav-link">Testimonials</a></li>
-                <li class="nav-item"><a href="#socials" class="nav-link">Socials</a></li>
-                <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
-                <li class="nav-item"><button class="close-btn" id="closeMenu">&times;</button></li>
-            </ul>
-            <div class="hamburger" id="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
+   <!-- ===== NAVIGATION ===== -->
+<nav class="navbar" id="navbar">
+    <div class="nav-container">
+        <a href="#home" class="nav-logo">Syawal Maulana Akbari<span></span></a>
+        <ul class="nav-menu" id="nav-menu">
+            <li class="nav-item"><a href="#home" class="nav-link active">Home</a></li>
+            <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+            <li class="nav-item"><a href="#resume" class="nav-link">Resume</a></li>
+            <li class="nav-item"><a href="#achievements" class="nav-link">Achievements</a></li>
+            <li class="nav-item"><a href="#dashboards" class="nav-link">Dashboards</a></li>
+            <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
+            <li class="nav-item"><a href="#testimonials" class="nav-link">Testimonials</a></li>
+            <li class="nav-item"><a href="#socials" class="nav-link">Socials</a></li>
+            <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+            <li class="nav-item"><button class="close-btn" id="closeMenu" aria-label="Close menu">&times;</button></li>
+        </ul>
+        <div class="hamburger" id="hamburger" aria-label="Toggle menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
         </div>
-    </nav>
+    </div>
+</nav>
 
-    <!-- ===== OVERLAY ===== -->
-    <div class="nav-overlay" id="navOverlay"></div>
+<!-- ===== OVERLAY ===== -->
+<div class="nav-overlay" id="navOverlay"></div>
 
     <!-- ===== HERO / ABOUT ===== -->
     <section id="home" class="hero">
@@ -2025,55 +2175,63 @@
             }, 800);
         });
 
-        // ============================================================
-        // NAVBAR - HAMBURGER MENU
-        // ============================================================
-        const navbar = document.getElementById('navbar');
-        const hamburger = document.getElementById('hamburger');
-        const navMenu = document.getElementById('nav-menu');
-        const navLinks = document.querySelectorAll('.nav-link');
-        const navOverlay = document.getElementById('navOverlay');
-        const closeBtn = document.getElementById('closeMenu');
+// ============================================================
+// NAVBAR - HAMBURGER MENU
+// ============================================================
+const navbar = document.getElementById('navbar');
+const hamburger = document.getElementById('hamburger');
+const navMenu = document.getElementById('nav-menu');
+const navLinks = document.querySelectorAll('.nav-link');
+const navOverlay = document.getElementById('navOverlay');
+const closeBtn = document.getElementById('closeMenu');
 
-        // Scroll effect
-        window.addEventListener('scroll', () => {
-            navbar.classList.toggle('scrolled', window.scrollY > 50);
-        });
+// Scroll effect
+window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 50);
+});
 
-        // Toggle menu
-        function toggleMenu() {
-            hamburger.classList.toggle('active');
-            navMenu.classList.toggle('active');
-            navOverlay.classList.toggle('active');
-            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+// Toggle menu function
+function toggleMenu() {
+    hamburger.classList.toggle('active');
+    navMenu.classList.toggle('active');
+    navOverlay.classList.toggle('active');
+    document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+}
+
+// Event listeners for toggle
+hamburger.addEventListener('click', toggleMenu);
+closeBtn.addEventListener('click', toggleMenu);
+navOverlay.addEventListener('click', toggleMenu);
+
+// Close menu on link click (mobile)
+navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        if (navMenu.classList.contains('active')) {
+            toggleMenu();
         }
+    });
+});
 
-        hamburger.addEventListener('click', toggleMenu);
-        closeBtn.addEventListener('click', toggleMenu);
-        navOverlay.addEventListener('click', toggleMenu);
+// Close menu on Escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+        toggleMenu();
+    }
+});
 
-        // Close menu on link click
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                if (navMenu.classList.contains('active')) {
-                    toggleMenu();
-                }
-            });
-        });
-
-        // Active link on scroll
-        window.addEventListener('scroll', () => {
-            let current = '';
-            document.querySelectorAll('section').forEach(section => {
-                const top = section.offsetTop - 150;
-                if (window.scrollY >= top) {
-                    current = section.getAttribute('id');
-                }
-            });
-            navLinks.forEach(link => {
-                link.classList.toggle('active', link.getAttribute('href') === `#${current}`);
-            });
-        });
+// Active link on scroll
+window.addEventListener('scroll', () => {
+    let current = '';
+    document.querySelectorAll('section').forEach(section => {
+        const top = section.offsetTop - 150;
+        if (window.scrollY >= top) {
+            current = section.getAttribute('id');
+        }
+    });
+    navLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === `#${current}`);
+    });
+});
 
         // ===== SCROLL ANIMATIONS =====
         const observer = new IntersectionObserver((entries) => {
