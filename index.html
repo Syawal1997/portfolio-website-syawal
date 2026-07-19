@@ -1353,233 +1353,246 @@ ACHIEVEMENTS
     </div>
 </section>
 
-    <!-- ===== DASHBOARD PORTFOLIO ===== -->
-    <section id="dashboards" class="dashboards section">
-        <div class="container">
-            <h2 class="section-title fade-in"><i class="fas fa-chart-pie"></i> Dashboard Portfolio</h2>
-            <p class="section-subtitle fade-in">Interactive visualizations with What, Why, Solution, and Results approach</p>
+   <!-- ============================================================
+DASHBOARD PORTFOLIO
+============================================================ -->
+<section id="dashboards" class="dashboards section">
+    <div class="container">
+        <h2 class="section-title fade-in"><i class="fas fa-chart-pie"></i> Dashboard Portfolio</h2>
+        <p class="section-subtitle fade-in">Interactive visualizations with What, Why, Solution, and Results approach</p>
 
-            <div class="dashboard-grid">
+        <div class="dashboard-grid">
 
-                <!-- Dashboard 1: E-Commerce Performance -->
-                <div class="dashboard-card fade-in">
-                    <div class="dashboard-header">
-                        <h3>🛒 E-Commerce Performance Dashboard</h3>
-                        <div class="tools">
-                            <span>Looker Studio</span>
-                            <span>BigQuery</span>
-                            <span>Google Sheets</span>
-                            <a href="https://lookerstudio.google.com/reporting/f560c04d-4f88-404f-9a6b-030c56efce19/page/cWd9D" target="_blank" class="link-btn"><i class="fas fa-external-link-alt"></i> Live Dashboard</a>
-                        </div>
-                    </div>
-
-                    <div class="dashboard-framework">
-                        <div class="framework-item">
-                            <div class="label">📌 What</div>
-                            <div class="value">Dashboard to monitor e-commerce performance in real-time</div>
-                        </div>
-                        <div class="framework-item">
-                            <div class="label">❓ Why</div>
-                            <div class="value">Data scattered across 3 platforms (GA, MySQL, Shopify) made monitoring difficult</div>
-                        </div>
-                        <div class="framework-item">
-                            <div class="label">🔧 Solution</div>
-                            <div class="value">Integrated data into BigQuery + Looker Studio dashboard with dynamic filters</div>
-                        </div>
-                        <div class="framework-item">
-                            <div class="label">📊 Results</div>
-                            <div class="value">Report access time reduced from 4 hours → < 5 minutes</div>
-                        </div>
-                    </div>
-
-                    <div class="chart-container" id="chartEcommerce"></div>
-
-                    <div class="insight-box">
-                        <i class="fas fa-chart-line"></i> <strong>Insight:</strong> Dashboard displays GMV, Conversion Rate, AOV, and Retention Rate. Interactive filters for Date and Country enable deep analysis.
-                        <br><span class="result">✅ Result: Marketing team can identify underperforming products within 1 day and adjust promotional strategies.</span>
+            <!-- Dashboard 1: E-Commerce Performance -->
+            <div class="dashboard-card fade-in">
+                <div class="dashboard-header">
+                    <h3>🛒 E-Commerce Performance Dashboard</h3>
+                    <div class="tools">
+                        <span>Looker Studio</span>
+                        <span>BigQuery</span>
+                        <span>Google Sheets</span>
+                        <a href="https://lookerstudio.google.com/reporting/f560c04d-4f88-404f-9a6b-030c56efce19/page/cWd9D" target="_blank" class="link-btn"><i class="fas fa-external-link-alt"></i> Live Dashboard</a>
                     </div>
                 </div>
 
-                <!-- Dashboard 2: Logistics KPI -->
-                <div class="dashboard-card fade-in">
-                    <div class="dashboard-header">
-                        <h3>🚚 Logistics KPI Dashboard</h3>
-                        <div class="tools">
-                            <span>Python</span>
-                            <span>Streamlit</span>
-                            <span>PostgreSQL</span>
-                            <a href="https://colab.research.google.com/drive/11jrXkFM_dPPssh2IzEn6pyaeqYZqqTig?usp=sharing" target="_blank" class="link-btn"><i class="fab fa-google"></i> Colab</a>
-                        </div>
+                <div class="dashboard-framework">
+                    <div class="framework-item">
+                        <div class="label">📌 What</div>
+                        <div class="value">Dashboard to monitor e-commerce performance in real-time</div>
                     </div>
-
-                    <div class="dashboard-framework">
-                        <div class="framework-item">
-                            <div class="label">📌 What</div>
-                            <div class="value">Real-time dashboard monitoring OTD, wait time, and warehouse throughput</div>
-                        </div>
-                        <div class="framework-item">
-                            <div class="label">❓ Why</div>
-                            <div class="value">Operations team struggled to detect bottlenecks quickly</div>
-                        </div>
-                        <div class="framework-item">
-                            <div class="label">🔧 Solution</div>
-                            <div class="value">WebSocket streaming data → PostgreSQL → Streamlit + Plotly</div>
-                        </div>
-                        <div class="framework-item">
-                            <div class="label">📊 Results</div>
-                            <div class="value">Detected wait time spikes >30 minutes within 5 minutes</div>
-                        </div>
+                    <div class="framework-item">
+                        <div class="label">❓ Why</div>
+                        <div class="value">Data scattered across 3 platforms (GA, MySQL, Shopify) made monitoring difficult</div>
                     </div>
-
-                    <div class="chart-container" id="chartLogistics"></div>
-
-                    <div class="insight-box">
-                        <i class="fas fa-truck"></i> <strong>Insight:</strong> Real-time monitoring of OTD Rate and Average Wait Time. Detects bottlenecks within 5 minutes.
-                        <br><span class="result">✅ Result: OTD improved by 12% in 2 months. Warehouse team can add shifts in real-time.</span>
+                    <div class="framework-item">
+                        <div class="label">🔧 Solution</div>
+                        <div class="value">Integrated data into BigQuery + Looker Studio dashboard with dynamic filters</div>
+                    </div>
+                    <div class="framework-item">
+                        <div class="label">📊 Results</div>
+                        <div class="value">Report access time reduced from 4 hours → < 5 minutes</div>
                     </div>
                 </div>
 
-                <!-- Dashboard 3: Sales & Profit Analysis -->
-                <div class="dashboard-card fade-in">
-                    <div class="dashboard-header">
-                        <h3>📊 Sales & Profit Analysis</h3>
-                        <div class="tools">
-                            <span>Power BI</span>
-                            <span>SQL</span>
-                            <span>Excel</span>
-                        </div>
-                    </div>
+                <div class="chart-container" id="chartEcommerce"></div>
 
-                    <div class="dashboard-framework">
-                        <div class="framework-item">
-                            <div class="label">📌 What</div>
-                            <div class="value">Dashboard analyzing sales and profit by product category</div>
-                        </div>
-                        <div class="framework-item">
-                            <div class="label">❓ Why</div>
-                            <div class="value">Marketing team struggled to allocate budget efficiently</div>
-                        </div>
-                        <div class="framework-item">
-                            <div class="label">🔧 Solution</div>
-                            <div class="value">Integrated sales data into Power BI with interactive visualizations</div>
-                        </div>
-                        <div class="framework-item">
-                            <div class="label">📊 Results</div>
-                            <div class="value">Marketing budget allocation became more targeted</div>
-                        </div>
-                    </div>
-
-                    <div class="chart-container" id="chartSales"></div>
-
-                    <div class="insight-box">
-                        <i class="fas fa-dollar-sign"></i> <strong>Insight:</strong> Analysis of sales trends by product category, profit margins, and regional contributions.
-                        <br><span class="result">✅ Result: Helped marketing team allocate budget efficiently and improve campaign ROI.</span>
-                    </div>
+                <div class="insight-box">
+                    <i class="fas fa-chart-line"></i> <strong>Insight:</strong> Dashboard displays GMV, Conversion Rate, AOV, and Retention Rate. Interactive filters for Date and Country enable deep analysis.
+                    <br><span class="result">✅ Result: Marketing team can identify underperforming products within 1 day and adjust promotional strategies.</span>
                 </div>
-
-                <!-- Dashboard 4: Customer Churn Analysis -->
-                <div class="dashboard-card fade-in">
-                    <div class="dashboard-header">
-                        <h3>📉 Customer Churn Analysis</h3>
-                        <div class="tools">
-                            <span>Python</span>
-                            <span>Tableau</span>
-                            <span>RFM</span>
-                            <a href="https://colab.research.google.com/drive/1u2oKzzDZTNpJW_JiD9LFI0B0fJ9CH7_c" target="_blank" class="link-btn"><i class="fab fa-google"></i> Colab</a>
-                        </div>
-                    </div>
-
-                    <div class="dashboard-framework">
-                        <div class="framework-item">
-                            <div class="label">📌 What</div>
-                            <div class="value">Predictive model to identify customers at risk of churn</div>
-                        </div>
-                        <div class="framework-item">
-                            <div class="label">❓ Why</div>
-                            <div class="value">Churn rate was 18% per quarter, marketing needed precise targeting</div>
-                        </div>
-                        <div class="framework-item">
-                            <div class="label">🔧 Solution</div>
-                            <div class="value">RFM segmentation + Random Forest for feature importance</div>
-                        </div>
-                        <div class="framework-item">
-                            <div class="label">📊 Results</div>
-                            <div class="value">Retention increased by 9% in 2 months</div>
-                        </div>
-                    </div>
-
-                    <div class="chart-container" id="chartChurn"></div>
-
-                    <div class="insight-box">
-                        <i class="fas fa-users"></i> <strong>Insight:</strong> Customers with recency >60 days but high past frequency have 68% churn potential.
-                        <br><span class="result">✅ Result: Reactivation program with 20% voucher improved retention by 9% in 2 months. Campaign ROI 4.2x.</span>
-                    </div>
-                </div>
-
             </div>
-        </div>
-    </section>
 
-    <!-- ===== PROJECTS ===== -->
-    <section id="projects" class="projects section">
-        <div class="container">
-            <h2 class="section-title fade-in"><i class="fas fa-folder-open"></i> Data Projects</h2>
-            <p class="section-subtitle fade-in">Data projects with Google Colab links</p>
-
-            <div class="project-grid">
-
-                <div class="project-card fade-in">
-                    <h3>📊 Real-Time Logistics KPI Dashboard</h3>
-                    <div class="project-meta"><span>Python</span><span>Streamlit</span><span>PostgreSQL</span></div>
-                    <p>Real-time dashboard monitoring OTD rate, wait time, and warehouse throughput with 30-second auto-refresh.</p>
-                    <a href="https://colab.research.google.com/drive/11jrXkFM_dPPssh2IzEn6pyaeqYZqqTig?usp=sharing" target="_blank" class="project-link">🔗 Open in Colab →</a>
+            <!-- Dashboard 2: Logistics KPI -->
+            <div class="dashboard-card fade-in">
+                <div class="dashboard-header">
+                    <h3>🚚 Logistics KPI Dashboard</h3>
+                    <div class="tools">
+                        <span>Python</span>
+                        <span>Streamlit</span>
+                        <span>PostgreSQL</span>
+                        <a href="https://colab.research.google.com/drive/11jrXkFM_dPPssh2IzEn6pyaeqYZqqTig?usp=sharing" target="_blank" class="link-btn"><i class="fab fa-google"></i> Colab</a>
+                        <a href="https://colab.research.google.com/drive/1qWzILZl6ssRAdR2Jzx2NsUhkYx7JboCn?usp=sharing" target="_blank" class="link-btn"><i class="fab fa-google"></i> Colab v2</a>
+                    </div>
                 </div>
 
-                <div class="project-card fade-in">
-                    <h3>📉 Customer Churn Prediction</h3>
-                    <div class="project-meta"><span>Python</span><span>Scikit-learn</span><span>RFM</span></div>
-                    <p>Churn prediction model with RFM segmentation and Random Forest. Improved customer retention by 9%.</p>
-                    <a href="https://colab.research.google.com/drive/1u2oKzzDZTNpJW_JiD9LFI0B0fJ9CH7_c" target="_blank" class="project-link">🔗 Open in Colab →</a>
+                <div class="dashboard-framework">
+                    <div class="framework-item">
+                        <div class="label">📌 What</div>
+                        <div class="value">Real-time dashboard monitoring OTD, wait time, and warehouse throughput</div>
+                    </div>
+                    <div class="framework-item">
+                        <div class="label">❓ Why</div>
+                        <div class="value">Operations team struggled to detect bottlenecks quickly</div>
+                    </div>
+                    <div class="framework-item">
+                        <div class="label">🔧 Solution</div>
+                        <div class="value">WebSocket streaming data → PostgreSQL → Streamlit + Plotly</div>
+                    </div>
+                    <div class="framework-item">
+                        <div class="label">📊 Results</div>
+                        <div class="value">Detected wait time spikes >30 minutes within 5 minutes</div>
+                    </div>
                 </div>
 
-                <div class="project-card fade-in">
-                    <h3>⚙️ Automated Data Quality Pipeline</h3>
-                    <div class="project-meta"><span>Great Expectations</span><span>dbt</span><span>Airflow</span></div>
-                    <p>Automated QC pipeline with 20+ data quality rules. Reduced data entry errors by 74%.</p>
-                    <a href="https://colab.research.google.com/drive/1_iiUyXRF5S2ziIaKsPUYfGsqgaIVrfP1" target="_blank" class="project-link">🔗 Open in Colab →</a>
-                </div>
+                <div class="chart-container" id="chartLogistics"></div>
 
-                <div class="project-card fade-in">
-                    <h3>📈 Sales Forecasting with Prophet</h3>
-                    <div class="project-meta"><span>Prophet</span><span>Time Series</span></div>
-                    <p>30-day daily order volume forecast with MAPE 8.3%. Reduced lost sales by 11%.</p>
-                    <a href="https://colab.research.google.com/drive/18C5EhpM8INwTz1DPfTRSC-80oQPXzmTY" target="_blank" class="project-link">🔗 Open in Colab →</a>
+                <div class="insight-box">
+                    <i class="fas fa-truck"></i> <strong>Insight:</strong> Real-time monitoring of OTD Rate and Average Wait Time. Detects bottlenecks within 5 minutes.
+                    <br><span class="result">✅ Result: OTD improved by 12% in 2 months. Warehouse team can add shifts in real-time.</span>
                 </div>
-
-                <div class="project-card fade-in">
-                    <h3>🔄 Multi-Source Stock Reconciliation</h3>
-                    <div class="project-meta"><span>SQL</span><span>Python</span><span>Tableau</span></div>
-                    <p>Stock reconciliation from 3 systems (ERP, WMS, Manual) with 98.5% accuracy and auto-notifications.</p>
-                    <a href="https://colab.research.google.com/drive/1aKojccNxq92IOmk97elgM2yanpYig0w7" target="_blank" class="project-link">🔗 Open in Colab →</a>
-                </div>
-
-                <div class="project-card fade-in">
-                    <h3>📊 E-Commerce Performance Dashboard</h3>
-                    <div class="project-meta"><span>Looker Studio</span><span>BigQuery</span></div>
-                    <p>Interactive dashboard for monitoring GMV, Conversion Rate, AOV, and Retention Rate.</p>
-                    <a href="https://lookerstudio.google.com/reporting/f560c04d-4f88-404f-9a6b-030c56efce19/page/cWd9D" target="_blank" class="project-link">🔗 View Dashboard →</a>
-                </div>
-
-                <div class="project-card fade-in">
-                    <h3>🧹 Data Cleaning & Deduplication</h3>
-                    <div class="project-meta"><span>Python</span><span>FuzzyWuzzy</span><span>Pandas</span></div>
-                    <p>Identified and cleaned 215,000+ duplicate customer records using fuzzy matching with 85% threshold.</p>
-                    <a href="https://colab.research.google.com/drive/1yrZMUt1AKycoD5KSRJwpCcogbrO9qjh-?usp=sharing" target="_blank" class="project-link">🔗 Open in Colab →</a>
-                </div>
-
             </div>
+
+            <!-- Dashboard 3: Sales & Profit Analysis -->
+            <div class="dashboard-card fade-in">
+                <div class="dashboard-header">
+                    <h3>📊 Sales & Profit Analysis</h3>
+                    <div class="tools">
+                        <span>Power BI</span>
+                        <span>SQL</span>
+                        <span>Excel</span>
+                        <a href="https://colab.research.google.com/drive/1u2oKzzDZTNpJW_JiD9LFI0B0fJ9CH7_c?usp=sharing" target="_blank" class="link-btn"><i class="fab fa-google"></i> Colab</a>
+                    </div>
+                </div>
+
+                <div class="dashboard-framework">
+                    <div class="framework-item">
+                        <div class="label">📌 What</div>
+                        <div class="value">Dashboard analyzing sales and profit by product category</div>
+                    </div>
+                    <div class="framework-item">
+                        <div class="label">❓ Why</div>
+                        <div class="value">Marketing team struggled to allocate budget efficiently</div>
+                    </div>
+                    <div class="framework-item">
+                        <div class="label">🔧 Solution</div>
+                        <div class="value">Integrated sales data into Power BI with interactive visualizations</div>
+                    </div>
+                    <div class="framework-item">
+                        <div class="label">📊 Results</div>
+                        <div class="value">Marketing budget allocation became more targeted</div>
+                    </div>
+                </div>
+
+                <div class="chart-container" id="chartSales"></div>
+
+                <div class="insight-box">
+                    <i class="fas fa-dollar-sign"></i> <strong>Insight:</strong> Analysis of sales trends by product category, profit margins, and regional contributions.
+                    <br><span class="result">✅ Result: Helped marketing team allocate budget efficiently and improve campaign ROI.</span>
+                </div>
+            </div>
+
+            <!-- Dashboard 4: Customer Churn Analysis -->
+            <div class="dashboard-card fade-in">
+                <div class="dashboard-header">
+                    <h3>📉 Customer Churn Analysis</h3>
+                    <div class="tools">
+                        <span>Python</span>
+                        <span>Tableau</span>
+                        <span>RFM</span>
+                        <a href="https://colab.research.google.com/drive/1u2oKzzDZTNpJW_JiD9LFI0B0fJ9CH7_c?usp=sharing" target="_blank" class="link-btn"><i class="fab fa-google"></i> Colab</a>
+                        <a href="https://colab.research.google.com/drive/1qWzILZl6ssRAdR2Jzx2NsUhkYx7JboCn?usp=sharing" target="_blank" class="link-btn"><i class="fab fa-google"></i> Colab v2</a>
+                    </div>
+                </div>
+
+                <div class="dashboard-framework">
+                    <div class="framework-item">
+                        <div class="label">📌 What</div>
+                        <div class="value">Predictive model to identify customers at risk of churn</div>
+                    </div>
+                    <div class="framework-item">
+                        <div class="label">❓ Why</div>
+                        <div class="value">Churn rate was 18% per quarter, marketing needed precise targeting</div>
+                    </div>
+                    <div class="framework-item">
+                        <div class="label">🔧 Solution</div>
+                        <div class="value">RFM segmentation + Random Forest for feature importance</div>
+                    </div>
+                    <div class="framework-item">
+                        <div class="label">📊 Results</div>
+                        <div class="value">Retention increased by 9% in 2 months</div>
+                    </div>
+                </div>
+
+                <div class="chart-container" id="chartChurn"></div>
+
+                <div class="insight-box">
+                    <i class="fas fa-users"></i> <strong>Insight:</strong> Customers with recency >60 days but high past frequency have 68% churn potential.
+                    <br><span class="result">✅ Result: Reactivation program with 20% voucher improved retention by 9% in 2 months. Campaign ROI 4.2x.</span>
+                </div>
+            </div>
+
         </div>
-    </section>
+    </div>
+</section>
+
+<!-- ============================================================
+PROJECTS
+============================================================ -->
+<section id="projects" class="projects section">
+    <div class="container">
+        <h2 class="section-title fade-in"><i class="fas fa-folder-open"></i> Data Projects</h2>
+        <p class="section-subtitle fade-in">Data projects with Google Colab links</p>
+
+        <div class="project-grid">
+
+            <div class="project-card fade-in">
+                <h3>📊 Real-Time Logistics KPI Dashboard</h3>
+                <div class="project-meta"><span>Python</span><span>Streamlit</span><span>PostgreSQL</span></div>
+                <p>Real-time dashboard monitoring OTD rate, wait time, and warehouse throughput with 30-second auto-refresh.</p>
+                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem;">
+                    <a href="https://colab.research.google.com/drive/11jrXkFM_dPPssh2IzEn6pyaeqYZqqTig?usp=sharing" target="_blank" class="project-link" style="margin-top: 0;">🔗 Open in Colab →</a>
+                    <a href="https://colab.research.google.com/drive/1qWzILZl6ssRAdR2Jzx2NsUhkYx7JboCn?usp=sharing" target="_blank" class="project-link" style="margin-top: 0; color: #92400e; background: #fef3c7; padding: 0.2rem 0.8rem; border-radius: 20px; font-size: 0.75rem; text-decoration: none;">📓 Colab v2</a>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <h3>📉 Customer Churn Prediction</h3>
+                <div class="project-meta"><span>Python</span><span>Scikit-learn</span><span>RFM</span></div>
+                <p>Churn prediction model with RFM segmentation and Random Forest. Improved customer retention by 9%.</p>
+                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem;">
+                    <a href="https://colab.research.google.com/drive/1u2oKzzDZTNpJW_JiD9LFI0B0fJ9CH7_c?usp=sharing" target="_blank" class="project-link" style="margin-top: 0;">🔗 Open in Colab →</a>
+                    <a href="https://colab.research.google.com/drive/1qWzILZl6ssRAdR2Jzx2NsUhkYx7JboCn?usp=sharing" target="_blank" class="project-link" style="margin-top: 0; color: #92400e; background: #fef3c7; padding: 0.2rem 0.8rem; border-radius: 20px; font-size: 0.75rem; text-decoration: none;">📓 Colab v2</a>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <h3>⚙️ Automated Data Quality Pipeline</h3>
+                <div class="project-meta"><span>Great Expectations</span><span>dbt</span><span>Airflow</span></div>
+                <p>Automated QC pipeline with 20+ data quality rules. Reduced data entry errors by 74%.</p>
+                <a href="https://colab.research.google.com/drive/1_iiUyXRF5S2ziIaKsPUYfGsqgaIVrfP1?usp=sharing" target="_blank" class="project-link">🔗 Open in Colab →</a>
+            </div>
+
+            <div class="project-card fade-in">
+                <h3>📈 Sales Forecasting with Prophet</h3>
+                <div class="project-meta"><span>Prophet</span><span>Time Series</span></div>
+                <p>30-day daily order volume forecast with MAPE 8.3%. Reduced lost sales by 11%.</p>
+                <a href="https://colab.research.google.com/drive/18C5EhpM8INwTz1DPfTRSC-80oQPXzmTY?usp=sharing" target="_blank" class="project-link">🔗 Open in Colab →</a>
+            </div>
+
+            <div class="project-card fade-in">
+                <h3>🔄 Multi-Source Stock Reconciliation</h3>
+                <div class="project-meta"><span>SQL</span><span>Python</span><span>Tableau</span></div>
+                <p>Stock reconciliation from 3 systems (ERP, WMS, Manual) with 98.5% accuracy and auto-notifications.</p>
+                <a href="https://colab.research.google.com/drive/1aKojccNxq92IOmk97elgM2yanpYig0w7?usp=sharing" target="_blank" class="project-link">🔗 Open in Colab →</a>
+            </div>
+
+            <div class="project-card fade-in">
+                <h3>📊 E-Commerce Performance Dashboard</h3>
+                <div class="project-meta"><span>Looker Studio</span><span>BigQuery</span></div>
+                <p>Interactive dashboard for monitoring GMV, Conversion Rate, AOV, and Retention Rate.</p>
+                <a href="https://lookerstudio.google.com/reporting/f560c04d-4f88-404f-9a6b-030c56efce19/page/cWd9D" target="_blank" class="project-link">🔗 View Dashboard →</a>
+            </div>
+
+            <div class="project-card fade-in">
+                <h3>🧹 Data Cleaning & Deduplication</h3>
+                <div class="project-meta"><span>Python</span><span>FuzzyWuzzy</span><span>Pandas</span></div>
+                <p>Identified and cleaned 215,000+ duplicate customer records using fuzzy matching with 85% threshold.</p>
+                <a href="https://colab.research.google.com/drive/1yrZMUt1AKycoD5KSRJwpCcogbrO9qjh-?usp=sharing" target="_blank" class="project-link">🔗 Open in Colab →</a>
+            </div>
+
+        </div>
+    </div>
+</section>
 
     <!-- ===== TESTIMONIALS ===== -->
     <section id="testimonials" class="testimonials section">
