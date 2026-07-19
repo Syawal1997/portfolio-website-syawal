@@ -66,7 +66,9 @@
             100% { transform: rotate(360deg); }
         }
 
-       /* ===== NAVIGATION ===== */
+     /* ============================================================
+NAVIGATION
+============================================================ */
 .navbar {
     position: fixed;
     top: 0;
@@ -109,6 +111,7 @@
     display: flex;
     list-style: none;
     gap: 2rem;
+    align-items: center;
 }
 
 .nav-link {
@@ -118,6 +121,7 @@
     font-size: 0.9rem;
     transition: color 0.3s;
     position: relative;
+    padding: 0.5rem 0;
 }
 
 .nav-link:hover,
@@ -128,7 +132,7 @@
 .nav-link::after {
     content: '';
     position: absolute;
-    bottom: -4px;
+    bottom: -2px;
     left: 0;
     width: 0;
     height: 2px;
@@ -141,7 +145,9 @@
     width: 100%;
 }
 
-/* ===== HAMBURGER ICON ===== */
+/* ============================================================
+HAMBURGER MENU - DESKTOP (hidden)
+============================================================ */
 .hamburger {
     display: none;
     flex-direction: column;
@@ -149,6 +155,8 @@
     gap: 5px;
     padding: 4px;
     z-index: 1001;
+    background: none;
+    border: none;
 }
 
 .hamburger .bar {
@@ -159,7 +167,6 @@
     transition: 0.3s ease;
 }
 
-/* ===== HAMBURGER ANIMATION ===== */
 .hamburger.active .bar:nth-child(2) {
     opacity: 0;
     transform: translateX(-10px);
@@ -173,7 +180,9 @@
     transform: translateY(-7.5px) rotate(-45deg);
 }
 
-/* ===== OVERLAY ===== */
+/* ============================================================
+OVERLAY
+============================================================ */
 .nav-overlay {
     display: none;
     position: fixed;
@@ -190,7 +199,9 @@
     display: block;
 }
 
-/* ===== CLOSE BUTTON ===== */
+/* ============================================================
+CLOSE BUTTON
+============================================================ */
 .nav-menu .close-btn {
     display: none;
     position: absolute;
@@ -208,6 +219,169 @@
 
 .nav-menu .close-btn:hover {
     color: #3b82f6;
+}
+
+/* ============================================================
+RESPONSIVE - TABLET & MOBILE
+============================================================ */
+
+/* ===== TABLET & IPAD (max-width: 992px) ===== */
+@media (max-width: 992px) {
+    /* Tampilkan hamburger */
+    .hamburger {
+        display: flex !important;
+    }
+
+    /* Tampilkan close button */
+    .nav-menu .close-btn {
+        display: block !important;
+    }
+
+    /* Nav menu: slide from right */
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 300px;
+        height: 100vh;
+        background: #ffffff;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1.5rem;
+        padding: 2rem;
+        transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.08);
+        z-index: 1000;
+        overflow-y: auto;
+    }
+
+    .nav-menu.active {
+        right: 0;
+    }
+
+    .nav-link {
+        font-size: 1.1rem;
+        padding: 0.5rem 1rem;
+        display: block;
+        text-align: center;
+        width: 100%;
+    }
+
+    .nav-link::after {
+        display: none;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+        background: #f1f5f9;
+        border-radius: 8px;
+        color: #3b82f6;
+    }
+
+    .nav-logo {
+        z-index: 1001;
+    }
+
+    /* Hero responsive */
+    .hero-about-content {
+        grid-template-columns: 1fr !important;
+        text-align: center !important;
+        gap: 2rem !important;
+        padding: 3rem 0 !important;
+    }
+    
+    .hero-text {
+        order: 2;
+    }
+    
+    .hero-image {
+        order: 1;
+    }
+
+    .profile-image {
+        max-width: 280px !important;
+        margin: 0 auto;
+    }
+
+    .hero-text > div {
+        justify-content: center !important;
+    }
+    
+    .hero-text .tag-cloud {
+        justify-content: center !important;
+    }
+}
+
+/* ===== MOBILE (max-width: 480px) ===== */
+@media (max-width: 480px) {
+    .nav-menu {
+        width: 100%;
+        right: -100%;
+        padding: 2rem 1.5rem;
+    }
+
+    .nav-menu.active {
+        right: 0;
+    }
+
+    .nav-link {
+        font-size: 1rem;
+        padding: 0.4rem 0.8rem;
+    }
+
+    .nav-container {
+        padding: 0 1rem;
+        height: 60px;
+    }
+
+    .nav-logo {
+        font-size: 1rem;
+    }
+
+    .hamburger .bar {
+        width: 24px;
+        height: 2px;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(6px) rotate(45deg);
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-6px) rotate(-45deg);
+    }
+
+    .nav-menu .close-btn {
+        font-size: 1.5rem;
+        top: 15px;
+        right: 15px;
+    }
+}
+
+/* ===== VERY SMALL PHONES (max-width: 380px) ===== */
+@media (max-width: 380px) {
+    .nav-menu {
+        padding: 1.5rem 1rem;
+    }
+
+    .nav-link {
+        font-size: 0.9rem;
+        padding: 0.3rem 0.6rem;
+    }
+
+    .hamburger .bar {
+        width: 20px;
+        height: 1.8px;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(5px) rotate(45deg);
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-5px) rotate(-45deg);
+    }
 }
 
 /* ============================================================
@@ -1434,10 +1608,10 @@ RESPONSIVE - TABLET & MOBILE
         <div class="loading-spinner"></div>
     </div>
 
-   <!-- ===== NAVIGATION ===== -->
+<!-- ===== NAVIGATION ===== -->
 <nav class="navbar" id="navbar">
     <div class="nav-container">
-        <a href="#home" class="nav-logo">Syawal Maulana Akbari<span></span></a>
+        <a href="#home" class="nav-logo">Syawal<span>Maulana Akbari</span></a>
         <ul class="nav-menu" id="nav-menu">
             <li class="nav-item"><a href="#home" class="nav-link active">Home</a></li>
             <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
@@ -2232,7 +2406,6 @@ window.addEventListener('scroll', () => {
         link.classList.toggle('active', link.getAttribute('href') === `#${current}`);
     });
 });
-
         // ===== SCROLL ANIMATIONS =====
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
