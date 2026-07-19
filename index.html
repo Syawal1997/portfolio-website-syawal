@@ -1596,6 +1596,44 @@ DASHBOARD PORTFOLIO
                     <br><span class="result">✅ Result: Provided actionable insights for hedging and treasury decisions, reducing forex exposure risk by 15%.</span>
                 </div>
             </div>
+                        <!-- Dashboard 7: NEW - Advanced Data Analytics -->
+            <div class="dashboard-card fade-in">
+                <div class="dashboard-header">
+                    <h3>📊 Advanced Data Analytics Dashboard</h3>
+                    <div class="tools">
+                        <span>Python</span>
+                        <span>Pandas</span>
+                        <span>Plotly</span>
+                        <a href="https://colab.research.google.com/drive/1gOYEVB2ghp1ZG6pzt4dZIgFAjXFcnB4X?usp=sharing" target="_blank" class="link-btn"><i class="fab fa-google"></i> Colab</a>
+                    </div>
+                </div>
+
+                <div class="dashboard-framework">
+                    <div class="framework-item">
+                        <div class="label">📌 What</div>
+                        <div class="value">Comprehensive data analytics dashboard for business performance monitoring</div>
+                    </div>
+                    <div class="framework-item">
+                        <div class="label">❓ Why</div>
+                        <div class="value">Need for integrated view of multiple business metrics to support strategic decision-making</div>
+                    </div>
+                    <div class="framework-item">
+                        <div class="label">🔧 Solution</div>
+                        <div class="value">Built interactive visualizations using Python, Pandas, and Plotly with automated data processing pipeline</div>
+                    </div>
+                    <div class="framework-item">
+                        <div class="label">📊 Results</div>
+                        <div class="value">Enabled real-time monitoring of key business metrics, reducing reporting time by 60%</div>
+                    </div>
+                </div>
+
+                <div class="chart-container" id="chartAdvanced"></div>
+
+                <div class="insight-box">
+                    <i class="fas fa-chart-simple"></i> <strong>Insight:</strong> Integrated dashboard providing holistic view of business performance across multiple dimensions including sales, operations, and customer metrics.
+                    <br><span class="result">✅ Result: Enabled faster data-driven decision-making, improving operational efficiency by 25%.</span>
+                </div>
+            </div>
 
         </div>
     </div>
@@ -1681,6 +1719,14 @@ PROJECTS
                 <div class="project-meta"><span>Python</span><span>Pandas</span><span>Plotly</span></div>
                 <p>Interactive dashboard for global trade analysis including export trends, trade balance, and COVID-19 impact. Helped identify new market opportunities in Southeast Asia.</p>
                 <a href="https://colab.research.google.com/drive/1qWzILZl6ssRAdR2Jzx2NsUhkYx7JboCn?usp=sharing" target="_blank" class="project-link">🔗 Open in Colab →</a>
+            </div>
+
+                        <!-- Project 10: Advanced Data Analytics -->
+            <div class="project-card fade-in">
+                <h3>📊 Advanced Data Analytics Dashboard</h3>
+                <div class="project-meta"><span>Python</span><span>Pandas</span><span>Plotly</span></div>
+                <p>Comprehensive data analytics dashboard for business performance monitoring with interactive visualizations and automated data processing pipeline. Enabled real-time monitoring of key business metrics.</p>
+                <a href="https://colab.research.google.com/drive/1gOYEVB2ghp1ZG6pzt4dZIgFAjXFcnB4X?usp=sharing" target="_blank" class="project-link">🔗 Open in Colab →</a>
             </div>
 
         </div>
@@ -1950,25 +1996,6 @@ PROJECTS
             hovermode: 'x unified'
         });
 
-        // ===== CONTACT FORM =====
-        document.getElementById('contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const btn = this.querySelector('.submit-button');
-            const original = btn.innerHTML;
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-            btn.disabled = true;
-            setTimeout(() => {
-                btn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
-                btn.style.background = '#22c55e';
-                this.reset();
-                setTimeout(() => {
-                    btn.innerHTML = original;
-                    btn.style.background = '';
-                    btn.disabled = false;
-                }, 2500);
-            }, 2000);
-        });
-
         // ===== CHART 5: USD/IDR Exchange Rate & Macro Analysis =====
 Plotly.newPlot('chartForex', [{
     x: ['2010', '2012', '2014', '2016', '2018', '2020', '2022', '2024', '2026'],
@@ -2024,7 +2051,48 @@ Plotly.newPlot('chartTrade', [{
     hovermode: 'x unified'
 });
 
-        // ===== YEAR =====
+        // ===== CHART 7: Advanced Data Analytics =====
+Plotly.newPlot('chartAdvanced', [{
+    x: ['Sales', 'Marketing', 'Operations', 'Finance', 'HR', 'IT'],
+    y: [92, 78, 85, 70, 88, 95],
+    type: 'bar',
+    marker: { 
+        color: ['#3b82f6', '#60a5fa', '#93c5fd', '#f59e0b', '#fbbf24', '#fcd34d'],
+        line: { color: '#1e293b', width: 1 }
+    },
+    name: 'Performance Score (%)',
+    text: ['92%', '78%', '85%', '70%', '88%', '95%'],
+    textposition: 'outside'
+}], {
+    title: '📊 Department Performance Dashboard',
+    xaxis: { title: 'Department' },
+    yaxis: { title: 'Performance Score (%)', range: [0, 100] },
+    margin: { l: 60, r: 30, t: 60, b: 50 },
+    template: 'plotly_white',
+    hovermode: 'x unified'
+});
+        
+                // ===== CONTACT FORM =====
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = this.querySelector('.submit-button');
+            const original = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            btn.disabled = true;
+            setTimeout(() => {
+                btn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
+                btn.style.background = '#22c55e';
+                this.reset();
+                setTimeout(() => {
+                    btn.innerHTML = original;
+                    btn.style.background = '';
+                    btn.disabled = false;
+                }, 2500);
+            }, 2000);
+        });
+
+        
+                // ===== YEAR =====
         document.getElementById('year').textContent = new Date().getFullYear();
 
         // ===== SMOOTH SCROLL =====
