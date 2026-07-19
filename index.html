@@ -1,392 +1,1577 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Professional portfolio website template - Modern minimalist design">
-    <meta name="keywords" content="portfolio, professional, designer, developer, minimalist">
-    <meta name="author" content="Your Name">
-    <title>Syawal Maulana Akbari - Professional Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="Syawal Maulana Akbari - Data Analyst Portfolio">
+    <title>Syawal Maulana Akbari | Data Analyst</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #fafafa;
+            color: #1a1a1a;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* ===== LOADING SCREEN ===== */
+        #loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #fafafa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.6s ease;
+        }
+        #loading-screen.fade-out {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid #e5e7eb;
+            border-top: 3px solid #2563eb;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            100% { transform: rotate(360deg); }
+        }
+
+        /* ===== TAG CLOUD ===== */
+        .tag-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.75rem 1.25rem;
+            margin: 1.5rem 0 2.5rem;
+        }
+        .tag-item {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #4a4a4a;
+            background: #f0f0f0;
+            padding: 0.35rem 1.2rem;
+            border-radius: 40px;
+            transition: all 0.3s ease;
+            letter-spacing: 0.3px;
+        }
+        .tag-item:hover {
+            background: #1a1a1a;
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        /* ===== NAVIGATION ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+            transition: all 0.3s ease;
+        }
+        .navbar.scrolled {
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+        .nav-logo {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+        .nav-logo span {
+            color: #2563eb;
+        }
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        .nav-link {
+            color: #4a4a4a;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+            position: relative;
+        }
+        .nav-link:hover {
+            color: #2563eb;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #2563eb;
+            transition: width 0.3s;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+        .hamburger .bar {
+            width: 28px;
+            height: 2.5px;
+            background: #1a1a1a;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+        .hamburger.active .bar:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.active .bar:nth-child(1) {
+            transform: translateY(7.5px) rotate(45deg);
+        }
+        .hamburger.active .bar:nth-child(3) {
+            transform: translateY(-7.5px) rotate(-45deg);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fafafa;
+            padding-top: 70px;
+            position: relative;
+            text-align: center;
+        }
+        .hero-container {
+            max-width: 900px;
+            padding: 2rem;
+        }
+        .hero-badge {
+            display: inline-block;
+            background: rgba(37, 99, 235, 0.08);
+            color: #2563eb;
+            padding: 0.4rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.5px;
+        }
+        .hero-title {
+            font-size: clamp(2.8rem, 6vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            letter-spacing: -1.5px;
+        }
+        .hero-title .highlight {
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 2vw, 1.6rem);
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+        }
+        .hero-description {
+            font-size: 1.1rem;
+            color: #4a4a4a;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            line-height: 1.8;
+        }
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 2.5rem;
+            flex-wrap: wrap;
+        }
+        .hero-stat .number {
+            display: block;
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #1a1a1a;
+        }
+        .hero-stat .label {
+            font-size: 0.85rem;
+            color: #6b7280;
+            font-weight: 500;
+        }
+        .cta-button {
+            display: inline-block;
+            background: #1a1a1a;
+            color: #fff;
+            padding: 0.9rem 2.8rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        .cta-button:hover {
+            background: #2563eb;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.3);
+        }
+        .cta-button i {
+            margin-right: 8px;
+        }
+
+        /* ===== SECTION ===== */
+        .section {
+            padding: 5rem 0;
+        }
+        .section-title {
+            text-align: center;
+            font-size: clamp(2rem, 3vw, 2.6rem);
+            font-weight: 700;
+            margin-bottom: 3rem;
+            letter-spacing: -0.5px;
+        }
+        .section-title i {
+            color: #2563eb;
+            margin-right: 12px;
+        }
+        .section-subtitle {
+            text-align: center;
+            color: #6b7280;
+            margin-top: -1.5rem;
+            margin-bottom: 2.5rem;
+            font-size: 1.05rem;
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.7s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== ABOUT ===== */
+        .about {
+            background: #ffffff;
+        }
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        .about-text .section-title {
+            text-align: left;
+        }
+        .about-description {
+            color: #4a4a4a;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+        .about-stats {
+            display: flex;
+            gap: 2.5rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        .stat {
+            text-align: center;
+        }
+        .stat-number {
+            display: block;
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #2563eb;
+        }
+        .stat-label {
+            font-size: 0.85rem;
+            color: #6b7280;
+            font-weight: 500;
+        }
+        .profile-image {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s;
+            background: #f0f0f0;
+        }
+        .profile-image:hover {
+            transform: scale(1.02);
+        }
+
+        /* ===== RESUME / EXPERIENCE ===== */
+        .resume {
+            background: #fafafa;
+        }
+        .experience-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .experience-card {
+            background: #ffffff;
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid #f0f0f0;
+            transition: all 0.3s ease;
+        }
+        .experience-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+        }
+        .experience-card .company {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #1a1a1a;
+        }
+        .experience-card .role {
+            font-weight: 600;
+            color: #2563eb;
+        }
+        .experience-card .period {
+            font-size: 0.9rem;
+            color: #6b7280;
+            margin-bottom: 1rem;
+        }
+        .experience-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .experience-card ul li {
+            padding: 0.3rem 0 0.3rem 1.5rem;
+            position: relative;
+            color: #4a4a4a;
+            font-size: 0.95rem;
+        }
+        .experience-card ul li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: #2563eb;
+        }
+        .experience-card .tools {
+            margin-top: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .experience-card .tools span {
+            background: #f0f0f0;
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: #4a4a4a;
+        }
+
+        /* ===== ACHIEVEMENTS ===== */
+        .achievements {
+            background: #ffffff;
+        }
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .achievement-card {
+            background: #fafafa;
+            padding: 1.5rem;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid #f0f0f0;
+            transition: all 0.3s ease;
+        }
+        .achievement-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+        }
+        .achievement-card .year {
+            font-size: 0.8rem;
+            color: #6b7280;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .achievement-card h3 {
+            margin: 0.5rem 0;
+            font-size: 1.1rem;
+        }
+        .achievement-card .org {
+            font-size: 0.9rem;
+            color: #2563eb;
+            font-weight: 500;
+        }
+        .achievement-card .badge {
+            display: inline-block;
+            background: #2563eb;
+            color: #fff;
+            padding: 0.2rem 1rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+
+        /* ===== WORK PORTFOLIO (Project Cards) ===== */
+        .work-portfolio {
+            background: #fafafa;
+        }
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-bottom: 2.5rem;
+        }
+        .filter-btn {
+            background: transparent;
+            border: 2px solid #e5e7eb;
+            color: #4a4a4a;
+            padding: 0.4rem 1.2rem;
+            border-radius: 40px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+        }
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: #1a1a1a;
+            border-color: #1a1a1a;
+            color: #fff;
+        }
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+        .project-card {
+            background: #ffffff;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid #f0f0f0;
+            transition: all 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+        }
+        .project-card .card-body {
+            padding: 1.5rem;
+        }
+        .project-card .card-body h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+        .project-card .card-body .project-meta {
+            font-size: 0.85rem;
+            color: #6b7280;
+            margin-bottom: 0.75rem;
+        }
+        .project-card .card-body .project-meta span {
+            background: #f0f0f0;
+            padding: 0.15rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #4a4a4a;
+            margin-right: 0.4rem;
+        }
+        .project-card .card-body p {
+            color: #4a4a4a;
+            font-size: 0.95rem;
+        }
+        .project-card .card-body .project-link {
+            display: inline-block;
+            margin-top: 1rem;
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .project-card .card-body .project-link:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== DASHBOARD PORTFOLIO ===== */
+        .dashboards {
+            background: #ffffff;
+        }
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        .dashboard-card {
+            background: #fafafa;
+            padding: 1.5rem;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid #f0f0f0;
+            transition: all 0.3s ease;
+        }
+        .dashboard-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+        }
+        .dashboard-card i {
+            font-size: 2.5rem;
+            color: #2563eb;
+            margin-bottom: 0.75rem;
+        }
+        .dashboard-card h4 {
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+        }
+        .dashboard-card .tool {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        /* ===== ARTICLES ===== */
+        .articles {
+            background: #fafafa;
+        }
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .article-card {
+            background: #ffffff;
+            padding: 1.5rem;
+            border-radius: 20px;
+            border: 1px solid #f0f0f0;
+            transition: all 0.3s ease;
+        }
+        .article-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+        }
+        .article-card .date {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+        .article-card h3 {
+            font-size: 1.1rem;
+            margin: 0.5rem 0;
+        }
+        .article-card .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-top: 0.75rem;
+        }
+        .article-card .tags span {
+            background: #e5e7eb;
+            padding: 0.15rem 0.7rem;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: #4a4a4a;
+        }
+        .article-card .read-link {
+            display: inline-block;
+            margin-top: 0.75rem;
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* ===== SOCIALS ===== */
+        .socials {
+            background: #ffffff;
+        }
+        .socials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .social-card {
+            background: #fafafa;
+            padding: 1.5rem;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid #f0f0f0;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: #1a1a1a;
+        }
+        .social-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+        }
+        .social-card i {
+            font-size: 2rem;
+            color: #2563eb;
+            margin-bottom: 0.5rem;
+        }
+        .social-card span {
+            display: block;
+            font-weight: 600;
+        }
+        .social-card small {
+            font-size: 0.75rem;
+            color: #6b7280;
+        }
+
+        /* ===== TESTIMONIALS ===== */
+        .testimonials {
+            background: #fafafa;
+        }
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+        .testimonial-card {
+            background: #ffffff;
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid #f0f0f0;
+            transition: all 0.3s ease;
+        }
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+        }
+        .testimonial-text {
+            font-size: 1rem;
+            color: #333;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+        .testimonial-text i {
+            color: #2563eb;
+            margin-right: 4px;
+        }
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .author-image {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+            background: #e5e7eb;
+        }
+        .author-name {
+            font-weight: 600;
+            margin-bottom: 0.1rem;
+        }
+        .author-title {
+            font-size: 0.85rem;
+            color: #6b7280;
+        }
+
+        /* ===== CONTACT ===== */
+        .contact {
+            background: #ffffff;
+        }
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+        .contact-info .section-title {
+            text-align: left;
+        }
+        .contact-description {
+            color: #4a4a4a;
+            margin-bottom: 2rem;
+        }
+        .contact-details {
+            margin: 2rem 0;
+        }
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 1rem;
+        }
+        .contact-label {
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #6b7280;
+        }
+        .contact-link {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .contact-link:hover {
+            color: #1d4ed8;
+        }
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .social-link {
+            color: #4a4a4a;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .social-link:hover {
+            color: #2563eb;
+        }
+        .social-link i {
+            margin-right: 6px;
+        }
+        .contact-form {
+            background: #fafafa;
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid #f0f0f0;
+        }
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+        .form-label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+            color: #1a1a1a;
+            font-size: 0.9rem;
+        }
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.3s;
+            background: #ffffff;
+        }
+        .form-input:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: #2563eb;
+        }
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        .submit-button {
+            background: #1a1a1a;
+            color: #fff;
+            border: none;
+            padding: 0.9rem 2rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+        }
+        .submit-button:hover {
+            background: #2563eb;
+            transform: translateY(-2px);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: #1a1a1a;
+            color: #9ca3af;
+            padding: 2rem 0;
+        }
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .footer-text {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+        .footer-nav {
+            display: flex;
+            gap: 2rem;
+        }
+        .footer-link {
+            color: #9ca3af;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+        .footer-link:hover {
+            color: #fff;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 992px) {
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+            .about-text .section-title {
+                text-align: center;
+            }
+            .about-stats {
+                justify-content: center;
+            }
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .contact-info .section-title {
+                text-align: center;
+            }
+            .social-links {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1.25rem;
+            }
+            .section {
+                padding: 3rem 0;
+            }
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background: #fff;
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                padding: 2rem 0;
+                gap: 1.5rem;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            }
+            .nav-menu.active {
+                left: 0;
+            }
+            .hamburger {
+                display: flex;
+            }
+            .hero-stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .footer-nav {
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 1rem;
+            }
+            .contact-form {
+                padding: 1.25rem;
+            }
+            .hero-title {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Loading Screen -->
+
+    <!-- ===== LOADING SCREEN ===== -->
     <div id="loading-screen">
         <div class="loading-spinner"></div>
     </div>
 
-    <!-- Navigation -->
+    <!-- ===== NAVIGATION ===== -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
-            <a href="#home" class="nav-logo">Syawal Maulana Akbari</a>
+            <a href="#home" class="nav-logo">Syawal<span>.</span></a>
             <ul class="nav-menu" id="nav-menu">
-                <li class="nav-item">
-                    <a href="#home" class="nav-link">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#about" class="nav-link">About</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#skills" class="nav-link">Skills</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#portfolio" class="nav-link">Portfolio</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#testimonials" class="nav-link">Testimonials</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#contact" class="nav-link">Contact</a>
-                </li>
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#resume" class="nav-link">Resume</a></li>
+                <li><a href="#achievements" class="nav-link">Achievements</a></li>
+                <li><a href="#work-portfolio" class="nav-link">Projects</a></li>
+                <li><a href="#dashboards" class="nav-link">Dashboards</a></li>
+                <li><a href="#articles" class="nav-link">Articles</a></li>
+                <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
+                <li><a href="#socials" class="nav-link">Socials</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
             <div class="hamburger" id="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
+                <span class="bar"></span><span class="bar"></span><span class="bar"></span>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- ===== HERO ===== -->
     <section id="home" class="hero">
         <div class="hero-container">
-            <div class="hero-content fade-in">
-                <h1 class="hero-title">Syawal Maulana Akbari</h1>
-                <p class="hero-subtitle">Creative Professional & Problem Solver</p>
-                <p class="hero-description">Crafting exceptional digital experiences through thoughtful design and innovative solutions.</p>
-                <a href="#portfolio" class="cta-button">View Projects</a>
+            <div class="hero-badge"><i class="fas fa-chart-line"></i> Data Analyst</div>
+            <h1 class="hero-title">Syawal <span class="highlight">Maulana Akbari</span></h1>
+            <p class="hero-subtitle">Data Analyst · Business Intelligence · Data Quality</p>
+            <p class="hero-description">
+                Data Analyst dengan pengalaman 4+ tahun dalam membangun sistem pelaporan real-time, memastikan kualitas data, dan memberikan wawasan bisnis yang berdampak. Berpengalaman di sektor logistik, ritel, dan fintech.
+            </p>
+
+            <!-- Tag Cloud -->
+            <div class="tag-cloud">
+                <span class="tag-item">📊 SQL</span>
+                <span class="tag-item">🐍 Python</span>
+                <span class="tag-item">📈 Tableau</span>
+                <span class="tag-item">📉 Looker Studio</span>
+                <span class="tag-item">⚙️ dbt</span>
+                <span class="tag-item">🧠 Machine Learning</span>
+                <span class="tag-item">📋 Great Expectations</span>
+                <span class="tag-item">📊 KPI Reporting</span>
+                <span class="tag-item">📦 ETL</span>
+                <span class="tag-item">📊 Power BI</span>
             </div>
-        </div>
-        <div class="hero-scroll-indicator">
-            <div class="scroll-arrow"></div>
+
+            <div class="hero-stats">
+                <div class="hero-stat"><span class="number">12+</span><span class="label">Data Projects</span></div>
+                <div class="hero-stat"><span class="number">98.5%</span><span class="label">Data Accuracy</span></div>
+                <div class="hero-stat"><span class="number">4+</span><span class="label">Years Experience</span></div>
+            </div>
+
+            <a href="#contact" class="cta-button"><i class="fas fa-paper-plane"></i> Let's Connect</a>
         </div>
     </section>
 
-    <!-- About Section -->
+    <!-- ===== ABOUT ===== -->
     <section id="about" class="about section">
         <div class="container">
             <div class="about-content">
                 <div class="about-text fade-in">
                     <h2 class="section-title">About Me</h2>
                     <p class="about-description">
-                        I'm a passionate creative professional with over 5 years of experience in digital design and development. 
-                        My approach combines strategic thinking with aesthetic sensibility to create meaningful and impactful work.
+                        Saya adalah <strong>Data Analyst</strong> yang berkomitmen mengubah data mentah menjadi wawasan bisnis yang bermakna. Dengan fondasi kuat di SQL, Python, dan visualisasi data, saya mengkhususkan diri dalam membangun sistem pelaporan otomatis, memastikan kualitas data, dan mengungkap pola tersembunyi.
                     </p>
                     <p class="about-description">
-                        I am blallaallal.
+                        Pengalaman saya mencakup sektor <strong>logistik, ritel, dan fintech</strong>, di mana saya berhasil mengimplementasikan dashboard KPI real-time, mengurangi waktu pemrosesan data hingga 70%, dan meningkatkan retensi pelanggan melalui strategi berbasis data.
+                    </p>
+                    <p class="about-description">
+                        Di luar pekerjaan, saya aktif sebagai <strong>mentor data</strong>, berbagi pengetahuan melalui artikel, dan membangun proyek-proyek data sebagai side projects.
                     </p>
                     <div class="about-stats">
-                        <div class="stat">
-                            <span class="stat-number">50+</span>
-                            <span class="stat-label">Projects Completed</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number">5+</span>
-                            <span class="stat-label">Years Experience</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number">30+</span>
-                            <span class="stat-label">Happy Clients</span>
-                        </div>
+                        <div class="stat"><span class="stat-number">12+</span><span class="stat-label">Projects</span></div>
+                        <div class="stat"><span class="stat-number">4+</span><span class="stat-label">Years</span></div>
+                        <div class="stat"><span class="stat-number">8+</span><span class="stat-label">Happy Clients</span></div>
                     </div>
                 </div>
                 <div class="about-image fade-in">
-                    <img src="https://photos.app.goo.gl/iN6B89QJhCQuqDaz5"  alt="Profile Picture" class="profile-image">
+                    <img src="https://drive.google.com/thumbnail?id=1Ptgl7EjK3byNJU55J_3cwF9Bm9RCWpWc&sz=w1000" alt="Syawal Maulana Akbari" class="profile-image">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="skills section">
+    <!-- ===== RESUME / EXPERIENCE ===== -->
+    <section id="resume" class="resume section">
         <div class="container">
-            <h2 class="section-title fade-in">Skills & Expertise</h2>
-            <div class="skills-grid">
-                <div class="skill-card fade-in">
-                    <div class="skill-icon">🎨</div>
-                    <h3 class="skill-title">Design</h3>
-                    <p class="skill-description">UI/UX Design, Visual Identity, Brand Strategy</p>
+            <h2 class="section-title fade-in"><i class="fas fa-briefcase"></i> Professional Experience</h2>
+            <p class="section-subtitle fade-in">Perjalanan karir saya di dunia data</p>
+
+            <div class="experience-grid">
+
+                <div class="experience-card fade-in">
+                    <div class="company">PT Data Insights Indonesia</div>
+                    <div class="role">Senior Data Analyst</div>
+                    <div class="period">Jan 2023 - Present</div>
+                    <ul>
+                        <li>Memimpin pengembangan dashboard KPI real-time untuk 5 divisi dengan refresh data otomatis setiap 30 menit.</li>
+                        <li>Membangun pipeline data quality dengan Great Expectations, mengurangi error reporting hingga 74%.</li>
+                        <li>Mengembangkan model prediksi churn dengan RFM segmentation yang meningkatkan retensi pelanggan 9%.</li>
+                    </ul>
+                    <div class="tools">
+                        <span>SQL</span><span>Python</span><span>Tableau</span><span>Great Expectations</span><span>dbt</span>
+                    </div>
                 </div>
-                <div class="skill-card fade-in">
-                    <div class="skill-icon">💻</div>
-                    <h3 class="skill-title">Development</h3>
-                    <p class="skill-description">Frontend Development, Responsive Design, Performance</p>
+
+                <div class="experience-card fade-in">
+                    <div class="company">LogistikID</div>
+                    <div class="role">Data Analyst</div>
+                    <div class="period">Jun 2021 - Dec 2022</div>
+                    <ul>
+                        <li>Merancang dashboard operasional real-time untuk monitoring On-Time Delivery (OTD) dan throughput gudang.</li>
+                        <li>Membangun sistem rekonsiliasi stok dari 3 sumber data (ERP, WMS, Manual) dengan akurasi 98.5%.</li>
+                        <li>Mengotomatiskan laporan mingguan, mengurangi waktu persiapan data dari 9 jam menjadi 1,2 jam.</li>
+                    </ul>
+                    <div class="tools">
+                        <span>SQL</span><span>Python</span><span>Looker Studio</span><span>PostgreSQL</span><span>Streamlit</span>
+                    </div>
                 </div>
-                <div class="skill-card fade-in">
-                    <div class="skill-icon">📱</div>
-                    <h3 class="skill-title">Mobile</h3>
-                    <p class="skill-description">Mobile-First Design, Progressive Web Apps</p>
+
+                <div class="experience-card fade-in">
+                    <div class="company">RetailPlus</div>
+                    <div class="role">Junior Data Analyst</div>
+                    <div class="period">Mar 2020 - May 2021</div>
+                    <ul>
+                        <li>Membangun dashboard penjualan harian dan mingguan untuk tim marketing dan operasional.</li>
+                        <li>Menganalisis data customer 500.000+ transaksi untuk segmentasi RFM dan rekomendasi produk.</li>
+                        <li>Membersihkan database customer dari 215.000+ duplikat menggunakan fuzzy matching.</li>
+                    </ul>
+                    <div class="tools">
+                        <span>SQL</span><span>Python</span><span>Power BI</span><span>Excel</span>
+                    </div>
                 </div>
-                <div class="skill-card fade-in">
-                    <div class="skill-icon">🚀</div>
-                    <h3 class="skill-title">Strategy</h3>
-                    <p class="skill-description">Product Strategy, User Research, Analytics</p>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ACHIEVEMENTS ===== -->
+    <section id="achievements" class="achievements section">
+        <div class="container">
+            <h2 class="section-title fade-in"><i class="fas fa-trophy"></i> Achievements</h2>
+            <p class="section-subtitle fade-in">Penghargaan dan pencapaian yang telah diraih</p>
+
+            <div class="achievements-grid">
+                <div class="achievement-card fade-in">
+                    <div class="year">2024</div>
+                    <h3>Best Data Dashboard Award</h3>
+                    <div class="org">Data Indonesia Summit</div>
+                    <span class="badge">🏆 1st Place</span>
                 </div>
-                <div class="skill-card fade-in">
-                    <div class="skill-icon">🎯</div>
-                    <h3 class="skill-title">Marketing</h3>
-                    <p class="skill-description">Digital Marketing, SEO, Content Strategy</p>
+
+                <div class="achievement-card fade-in">
+                    <div class="year">2023</div>
+                    <h3>Top 10 Data Analyst</h3>
+                    <div class="org">Data Science Indonesia</div>
+                    <span class="badge">⭐ Top 10</span>
                 </div>
-                <div class="skill-card fade-in">
-                    <div class="skill-icon">⚡</div>
-                    <h3 class="skill-title">Optimization</h3>
-                    <p class="skill-description">Performance Optimization, A/B Testing</p>
+
+                <div class="achievement-card fade-in">
+                    <div class="year">2022</div>
+                    <h3>Excellence in Data Quality</h3>
+                    <div class="org">LogistikID</div>
+                    <span class="badge">🏅 Outstanding Performance</span>
+                </div>
+
+                <div class="achievement-card fade-in">
+                    <div class="year">2021</div>
+                    <h3>Hackathon Data Analytics</h3>
+                    <div class="org">Bank Indonesia</div>
+                    <span class="badge">🏆 3rd Place</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="portfolio section">
+    <!-- ===== WORK PORTFOLIO (Projects) ===== -->
+    <section id="work-portfolio" class="work-portfolio section">
         <div class="container">
-            <h2 class="section-title fade-in">Featured Projects</h2>
-            
-            <!-- Filter Buttons -->
-            <div class="portfolio-filters fade-in">
+            <h2 class="section-title fade-in"><i class="fas fa-folder-open"></i> Work Projects</h2>
+            <p class="section-subtitle fade-in">Proyek-proyek data yang telah saya kerjakan</p>
+
+            <div class="filter-buttons fade-in">
                 <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="web">Web Design</button>
-                <button class="filter-btn" data-filter="mobile">Mobile</button>
-                <button class="filter-btn" data-filter="branding">Branding</button>
+                <button class="filter-btn" data-filter="dashboard">Dashboard</button>
+                <button class="filter-btn" data-filter="ml">Machine Learning</button>
+                <button class="filter-btn" data-filter="etl">ETL & Data Quality</button>
+                <button class="filter-btn" data-filter="analytics">Analytics</button>
             </div>
 
-            <!-- Portfolio Grid -->
-            <div class="portfolio-grid">
-                <div class="portfolio-item fade-in" data-category="web">
-                    <div class="portfolio-image">
-                        <img src="https://images.unsplash.com/photo-1648134859196-3aa762e9440d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8RSUyMGNvbW1lcmNlJTIwUGxhdGZvcm18ZW58MHx8MHx8fDA%3D" alt="E-commerce Platform">
-                        <div class="portfolio-overlay">
-                            <a href="#" class="portfolio-link" aria-label="View E-commerce Platform project">View Project</a>
-                        </div>
-                    </div>
-                    <div class="portfolio-content">
-                        <h3 class="portfolio-title">E-commerce Platform</h3>
-                        <p class="portfolio-description">Modern e-commerce solution with seamless user experience and conversion optimization.</p>
-                        <div class="portfolio-tags">
-                            <span class="tag">UI/UX</span>
-                            <span class="tag">Frontend</span>
-                            <span class="tag">E-commerce</span>
-                        </div>
+            <div class="project-grid" id="projectGrid">
+
+                <!-- PROJECT 1: KPI Dashboard - Link COLAB -->
+                <div class="project-card" data-category="dashboard">
+                    <div class="card-body">
+                        <h3>📊 Real-Time Logistics KPI Dashboard</h3>
+                        <div class="project-meta"><span>Python</span><span>Streamlit</span><span>PostgreSQL</span></div>
+                        <p>Dashboard real-time monitoring OTD rate, wait time, dan throughput gudang dengan auto-refresh 30 detik.</p>
+                        <a href="https://colab.research.google.com/drive/11jrXkFM_dPPssh2IzEn6pyaeqYZqqTig?usp=sharing" target="_blank" class="project-link">🔗 Buka di Colab →</a>
                     </div>
                 </div>
 
-                <div class="portfolio-item fade-in" data-category="mobile">
-                    <div class="portfolio-image">
-                        <img src="https://images.unsplash.com/photo-1554731617-8eafa9975365?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fEUlMjBjb21tZXJjZSUyMFBsYXRmb3JtfGVufDB8fDB8fHww" alt="Fitness Mobile App">
-                        <div class="portfolio-overlay">
-                            <a href="#" class="portfolio-link" aria-label="View Fitness Mobile App project">View Project</a>
-                        </div>
-                    </div>
-                    <div class="portfolio-content">
-                        <h3 class="portfolio-title">Fitness Mobile App</h3>
-                        <p class="portfolio-description">Comprehensive fitness tracking app with personalized workout plans and progress monitoring.</p>
-                        <div class="portfolio-tags">
-                            <span class="tag">Mobile</span>
-                            <span class="tag">UI/UX</span>
-                            <span class="tag">Health</span>
-                        </div>
+                <!-- PROJECT 2: Churn Prediction -->
+                <div class="project-card" data-category="ml">
+                    <div class="card-body">
+                        <h3>📉 Customer Churn Prediction</h3>
+                        <div class="project-meta"><span>Python</span><span>Scikit-learn</span><span>RFM</span></div>
+                        <p>Model prediksi churn dengan RFM segmentation dan Random Forest. Meningkatkan retensi pelanggan 9%.</p>
+                        <a href="https://colab.research.google.com/drive/1u2oKzzDZTNpJW_JiD9LFI0B0fJ9CH7_c" target="_blank" class="project-link">🔗 Buka di Colab →</a>
                     </div>
                 </div>
 
-                <div class="portfolio-item fade-in" data-category="branding">
-                    <div class="portfolio-image">
-                        <img src="https://images.unsplash.com/photo-1502945015378-0e284ca1a5be?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8RSUyMGNvbW1lcmNlJTIwUGxhdGZvcm18ZW58MHx8MHx8fDA%3D" alt="Brand Identity Design">
-                        <div class="portfolio-overlay">
-                            <a href="#" class="portfolio-link" aria-label="View Brand Identity Design project">View Project</a>
-                        </div>
-                    </div>
-                    <div class="portfolio-content">
-                        <h3 class="portfolio-title">Brand Identity Design</h3>
-                        <p class="portfolio-description">Complete brand identity system for a sustainable fashion startup.</p>
-                        <div class="portfolio-tags">
-                            <span class="tag">Branding</span>
-                            <span class="tag">Logo Design</span>
-                            <span class="tag">Identity</span>
-                        </div>
+                <!-- PROJECT 3: Data Quality Pipeline -->
+                <div class="project-card" data-category="etl">
+                    <div class="card-body">
+                        <h3>⚙️ Automated Data Quality Pipeline</h3>
+                        <div class="project-meta"><span>Great Expectations</span><span>dbt</span><span>Airflow</span></div>
+                        <p>Pipeline QC otomatis dengan 20+ aturan kualitas data. Mengurangi error data entry hingga 74%.</p>
+                        <a href="https://colab.research.google.com/drive/1_iiUyXRF5S2ziIaKsPUYfGsqgaIVrfP1" target="_blank" class="project-link">🔗 Buka di Colab →</a>
                     </div>
                 </div>
 
-                <div class="portfolio-item fade-in" data-category="web">
-                    <div class="portfolio-image">
-                        <img src="https://images.unsplash.com/photo-1587382926858-4a0dd19eb252?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fEUlMjBjb21tZXJjZSUyMFBsYXRmb3JtfGVufDB8fDB8fHww" alt="Corporate Website">
-                        <div class="portfolio-overlay">
-                            <a href="#" class="portfolio-link" aria-label="View Corporate Website project">View Project</a>
-                        </div>
-                    </div>
-                    <div class="portfolio-content">
-                        <h3 class="portfolio-title">Corporate Website</h3>
-                        <p class="portfolio-description">Professional corporate website with focus on credibility and lead generation.</p>
-                        <div class="portfolio-tags">
-                            <span class="tag">Web Design</span>
-                            <span class="tag">Corporate</span>
-                            <span class="tag">CMS</span>
-                        </div>
+                <!-- PROJECT 4: Sales Forecasting -->
+                <div class="project-card" data-category="analytics">
+                    <div class="card-body">
+                        <h3>📈 Sales Forecasting with Prophet</h3>
+                        <div class="project-meta"><span>Prophet</span><span>Time Series</span></div>
+                        <p>Prediksi volume order harian 30 hari ke depan dengan MAPE 8.3%. Mengurangi lost sales 11%.</p>
+                        <a href="https://colab.research.google.com/drive/18C5EhpM8INwTz1DPfTRSC-80oQPXzmTY" target="_blank" class="project-link">🔗 Buka di Colab →</a>
                     </div>
                 </div>
 
-                <div class="portfolio-item fade-in" data-category="mobile">
-                    <div class="portfolio-image">
-                        <img src="https://images.unsplash.com/photo-1511296933631-18b1a062212c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fEUlMjBjb21tZXJjZSUyMFBsYXRmb3JtfGVufDB8fDB8fHww" alt="Food Delivery App">
-                        <div class="portfolio-overlay">
-                            <a href="#" class="portfolio-link" aria-label="View Food Delivery App project">View Project</a>
-                        </div>
-                    </div>
-                    <div class="portfolio-content">
-                        <h3 class="portfolio-title">Food Delivery App</h3>
-                        <p class="portfolio-description">Intuitive food delivery application with real-time tracking and seamless ordering.</p>
-                        <div class="portfolio-tags">
-                            <span class="tag">Mobile</span>
-                            <span class="tag">Food Tech</span>
-                            <span class="tag">UX</span>
-                        </div>
+                <!-- PROJECT 5: Stock Reconciliation -->
+                <div class="project-card" data-category="etl">
+                    <div class="card-body">
+                        <h3>🔄 Multi-Source Stock Reconciliation</h3>
+                        <div class="project-meta"><span>SQL</span><span>Python</span><span>Tableau</span></div>
+                        <p>Rekonsiliasi stok dari 3 sistem (ERP, WMS, Manual) dengan akurasi 98.5% dan notifikasi otomatis.</p>
+                        <a href="https://colab.research.google.com/drive/1aKojccNxq92IOmk97elgM2yanpYig0w7" target="_blank" class="project-link">🔗 Buka di Colab →</a>
                     </div>
                 </div>
 
-                <div class="portfolio-item fade-in" data-category="branding">
-                    <div class="portfolio-image">
-                        <img src="https://plus.unsplash.com/premium_photo-1683798464819-d1376249293e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fEUlMjBjb21tZXJjZSUyMFBsYXRmb3JtfGVufDB8fDB8fHww" alt="Product Packaging">
-                        <div class="portfolio-overlay">
-                            <a href="#" class="portfolio-link" aria-label="View Product Packaging project">View Project</a>
-                        </div>
+                <!-- PROJECT 6: E-Commerce Dashboard -->
+                <div class="project-card" data-category="dashboard">
+                    <div class="card-body">
+                        <h3>📊 E-Commerce Performance Dashboard</h3>
+                        <div class="project-meta"><span>Looker Studio</span><span>BigQuery</span></div>
+                        <p>Dashboard interaktif untuk monitoring GMV, Conversion Rate, AOV, dan Retention Rate.</p>
+                        <a href="https://datastudio.google.com/u/0/reporting/f560c04d-4f88-404f-9a6b-030c56efce19/page/cWd9D" target="_blank" class="project-link">🔗 Lihat Dashboard →</a>
                     </div>
-                    <div class="portfolio-content">
-                        <h3 class="portfolio-title">Product Packaging</h3>
-                        <p class="portfolio-description">Eco-friendly packaging design that reflects brand values and attracts customers.</p>
-                        <div class="portfolio-tags">
-                            <span class="tag">Packaging</span>
-                            <span class="tag">Sustainability</span>
-                            <span class="tag">Print</span>
-                        </div>
-                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== DASHBOARD PORTFOLIO ===== -->
+    <section id="dashboards" class="dashboards section">
+        <div class="container">
+            <h2 class="section-title fade-in"><i class="fas fa-chart-pie"></i> Dashboard Portfolio</h2>
+            <p class="section-subtitle fade-in">Koleksi dashboard yang telah saya bangun</p>
+
+            <div class="dashboard-grid">
+                <div class="dashboard-card fade-in">
+                    <i class="fas fa-chart-line"></i>
+                    <h4>Logistics KPI Dashboard</h4>
+                    <div class="tool">Streamlit · PostgreSQL</div>
+                </div>
+                <div class="dashboard-card fade-in">
+                    <i class="fas fa-shopping-cart"></i>
+                    <h4>E-Commerce Performance</h4>
+                    <div class="tool">Looker Studio · BigQuery</div>
+                </div>
+                <div class="dashboard-card fade-in">
+                    <i class="fas fa-users"></i>
+                    <h4>Customer Churn Dashboard</h4>
+                    <div class="tool">Tableau · Python</div>
+                </div>
+                <div class="dashboard-card fade-in">
+                    <i class="fas fa-boxes"></i>
+                    <h4>Inventory Reconciliation</h4>
+                    <div class="tool">Tableau · SQL</div>
+                </div>
+                <div class="dashboard-card fade-in">
+                    <i class="fas fa-chart-bar"></i>
+                    <h4>Sales Forecasting</h4>
+                    <div class="tool">Power BI · Prophet</div>
+                </div>
+                <div class="dashboard-card fade-in">
+                    <i class="fas fa-check-circle"></i>
+                    <h4>Data Quality Dashboard</h4>
+                    <div class="tool">Great Expectations · dbt</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials Section -->
+    <!-- ===== ARTICLES ===== -->
+    <section id="articles" class="articles section">
+        <div class="container">
+            <h2 class="section-title fade-in"><i class="fas fa-pen-fancy"></i> Articles & Writings</h2>
+            <p class="section-subtitle fade-in">Artikel dan tulisan tentang data analytics</p>
+
+            <div class="articles-grid">
+                <div class="article-card fade-in">
+                    <div class="date">December 2024</div>
+                    <h3>How I Reduced My Team's Data Processing Time by 70%</h3>
+                    <p>Panduan komprehensif tentang optimasi pipeline data dan implementasi QC automation.</p>
+                    <div class="tags">
+                        <span>Data Engineering</span>
+                        <span>ETL</span>
+                        <span>Optimization</span>
+                    </div>
+                    <a href="#" class="read-link">Baca Selengkapnya →</a>
+                </div>
+
+                <div class="article-card fade-in">
+                    <div class="date">September 2024</div>
+                    <h3>Building Real-Time KPI Dashboards with Streamlit</h3>
+                    <p>Tutorial membangun dashboard monitoring real-time menggunakan Streamlit dan PostgreSQL.</p>
+                    <div class="tags">
+                        <span>Streamlit</span>
+                        <span>Dashboard</span>
+                        <span>Python</span>
+                    </div>
+                    <a href="#" class="read-link">Baca Selengkapnya →</a>
+                </div>
+
+                <div class="article-card fade-in">
+                    <div class="date">July 2024</div>
+                    <h3>Data Quality Framework: From Manual to Automated</h3>
+                    <p>Bagaimana mengimplementasikan Great Expectations untuk automated data quality checks.</p>
+                    <div class="tags">
+                        <span>Data Quality</span>
+                        <span>Great Expectations</span>
+                        <span>Automation</span>
+                    </div>
+                    <a href="#" class="read-link">Baca Selengkapnya →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TESTIMONIALS ===== -->
     <section id="testimonials" class="testimonials section">
         <div class="container">
-            <h2 class="section-title fade-in">What Clients Say</h2>
+            <h2 class="section-title fade-in"><i class="fas fa-quote-left"></i> What People Say</h2>
+
             <div class="testimonials-grid">
+
                 <div class="testimonial-card fade-in">
-                    <div class="testimonial-content">
-                        <p class="testimonial-text">"Exceptional work quality and attention to detail. The project was delivered on time and exceeded our expectations."</p>
-                        <div class="testimonial-author">
-                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cGVyc29ufGVufDB8fDB8fHww" alt="Sarah Johnson" class="author-image">
-                            <div class="author-info">
-                                <h4 class="author-name">Sarah Johnson</h4>
-                                <p class="author-title">CEO, TechStart Inc.</p>
-                            </div>
+                    <p class="testimonial-text"><i class="fas fa-quote-left"></i> "Syawal's ability to turn complex data into clear, actionable insights is exceptional. His KPI dashboard completely transformed our logistics operations."</p>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=60" alt="Andi Pratama" class="author-image">
+                        <div>
+                            <h4 class="author-name">Andi Pratama</h4>
+                            <p class="author-title">Operations Director, LogistikID</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="testimonial-card fade-in">
-                    <div class="testimonial-content">
-                        <p class="testimonial-text">"Professional, creative, and reliable. I highly recommend for any design or development project."</p>
-                        <div class="testimonial-author">
-                            <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8cGVyc29ufGVufDB8fDB8fHww" alt="Michael Chen" class="author-image">
-                            <div class="author-info">
-                                <h4 class="author-name">Michael Chen</h4>
-                                <p class="author-title">Marketing Director, GrowthCo</p>
-                            </div>
+                    <p class="testimonial-text"><i class="fas fa-quote-left"></i> "Syawal's data quality framework reduced our reporting errors by 74%. He's a detail-oriented analyst who truly understands business needs."</p>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop&q=60" alt="Dewi Lestari" class="author-image">
+                        <div>
+                            <h4 class="author-name">Dewi Lestari</h4>
+                            <p class="author-title">Head of Data, FinTech Solutions</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="testimonial-card fade-in">
-                    <div class="testimonial-content">
-                        <p class="testimonial-text">"Outstanding communication and project management. The final result was exactly what we envisioned."</p>
-                        <div class="testimonial-author">
-                            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8cGVyc29ufGVufDB8fDB8fHww" alt="Emily Rodriguez" class="author-image">
-                            <div class="author-info">
-                                <h4 class="author-name">Emily Rodriguez</h4>
-                                <p class="author-title">Founder, Creative Studio</p>
-                            </div>
+                    <p class="testimonial-text"><i class="fas fa-quote-left"></i> "The churn prediction model Syawal built helped us increase customer retention by 9% in just 2 months. His insights were spot on."</p>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&auto=format&fit=crop&q=60" alt="Budi Santoso" class="author-image">
+                        <div>
+                            <h4 class="author-name">Budi Santoso</h4>
+                            <p class="author-title">CEO, RetailPlus</p>
                         </div>
                     </div>
                 </div>
+
+                <div class="testimonial-card fade-in">
+                    <p class="testimonial-text"><i class="fas fa-quote-left"></i> "Syawal went above and beyond to guide me on my journey as a data analyst. He patiently answered my questions, shared practical examples, and offered constructive feedback."</p>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&auto=format&fit=crop&q=60" alt="Sarah Chen" class="author-image">
+                        <div>
+                            <h4 class="author-name">Sarah Chen</h4>
+                            <p class="author-title">Junior Data Analyst, TechStart</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card fade-in">
+                    <p class="testimonial-text"><i class="fas fa-quote-left"></i> "Very insightful session! Syawal was meticulous and took the time to thoroughly understand my situation, offering professional recommendations accordingly."</p>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&auto=format&fit=crop&q=60" alt="Rina Wijaya" class="author-image">
+                        <div>
+                            <h4 class="author-name">Rina Wijaya</h4>
+                            <p class="author-title">Product Manager, EduTech</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card fade-in">
+                    <p class="testimonial-text"><i class="fas fa-quote-left"></i> "Syawal is an amazing mentor. He is very insightful and always willing to answer my concerns and questions. He genuinely wants to help me succeed."</p>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=100&auto=format&fit=crop&q=60" alt="Alyza Fitri" class="author-image">
+                        <div>
+                            <h4 class="author-name">Alyza Fitri</h4>
+                            <p class="author-title">CS Student, BINUS University</p>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- ===== SOCIALS ===== -->
+    <section id="socials" class="socials section">
+        <div class="container">
+            <h2 class="section-title fade-in"><i class="fas fa-share-alt"></i> Connect with Me</h2>
+            <p class="section-subtitle fade-in">Temukan saya di berbagai platform</p>
+
+            <div class="socials-grid">
+                <a href="#" class="social-card">
+                    <i class="fab fa-linkedin"></i>
+                    <span>LinkedIn</span>
+                    <small>Professional profile</small>
+                </a>
+                <a href="#" class="social-card">
+                    <i class="fab fa-github"></i>
+                    <span>GitHub</span>
+                    <small>Code & projects</small>
+                </a>
+                <a href="#" class="social-card">
+                    <i class="fab fa-medium"></i>
+                    <span>Medium</span>
+                    <small>Articles & writings</small>
+                </a>
+                <a href="#" class="social-card">
+                    <i class="fab fa-twitter"></i>
+                    <span>Twitter</span>
+                    <small>Thoughts & updates</small>
+                </a>
+                <a href="#" class="social-card">
+                    <i class="fas fa-envelope"></i>
+                    <span>Email</span>
+                    <small>Direct contact</small>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
     <section id="contact" class="contact section">
         <div class="container">
             <div class="contact-content">
                 <div class="contact-info fade-in">
                     <h2 class="section-title">Let's Work Together</h2>
                     <p class="contact-description">
-                        Ready to bring your ideas to life? I'd love to hear about your project and discuss how we can create something amazing together.
+                        Saya selalu terbuka untuk peluang dan kolaborasi baru. Apakah Anda butuh bantuan dengan strategi data, pengembangan dashboard, atau analitik, mari kita bicara.
                     </p>
                     <div class="contact-details">
                         <div class="contact-item">
                             <span class="contact-label">Email</span>
-                            <a href="mailto:hello@yourname.com" class="contact-link">hello@yourname.com</a>
-                        </div>
-                        <div class="contact-item">
-                            <span class="contact-label">Phone</span>
-                            <a href="tel:+1234567890" class="contact-link">+1 (234) 567-890</a>
+                            <a href="mailto:syawal.maulana@dataanalyst.id" class="contact-link">syawal.maulana@dataanalyst.id</a>
                         </div>
                         <div class="contact-item">
                             <span class="contact-label">Location</span>
-                            <span class="contact-text">New York, NY</span>
+                            <span class="contact-link">Jakarta, Indonesia</span>
                         </div>
                     </div>
                     <div class="social-links">
-                        <a href="#" class="social-link" aria-label="LinkedIn">LinkedIn</a>
-                        <a href="#" class="social-link" aria-label="Twitter">Twitter</a>
-                        <a href="#" class="social-link" aria-label="Dribbble">Dribbble</a>
-                        <a href="#" class="social-link" aria-label="GitHub">GitHub</a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                        <a href="#" class="social-link"><i class="fab fa-github"></i> GitHub</a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i> Twitter</a>
+                        <a href="#" class="social-link"><i class="fab fa-medium"></i> Medium</a>
                     </div>
                 </div>
                 <form class="contact-form fade-in" id="contact-form">
                     <div class="form-group">
-                        <label for="name" class="form-label">Name</label>
-                        <input type="text" id="name" name="name" class="form-input" required>
+                        <label class="form-label">Full Name</label>
+                        <input type="text" class="form-input" placeholder="Your name" required>
                     </div>
                     <div class="form-group">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" id="email" name="email" class="form-input" required>
+                        <label class="form-label">Email Address</label>
+                        <input type="email" class="form-input" placeholder="you@example.com" required>
                     </div>
                     <div class="form-group">
-                        <label for="subject" class="form-label">Subject</label>
-                        <input type="text" id="subject" name="subject" class="form-input" required>
+                        <label class="form-label">Subject</label>
+                        <input type="text" class="form-input" placeholder="Project discussion" required>
                     </div>
                     <div class="form-group">
-                        <label for="message" class="form-label">Message</label>
-                        <textarea id="message" name="message" class="form-textarea" rows="5" required></textarea>
+                        <label class="form-label">Message</label>
+                        <textarea class="form-textarea" rows="5" placeholder="Tell me about your project..." required></textarea>
                     </div>
-                    <button type="submit" class="submit-button">Send Message</button>
+                    <button type="submit" class="submit-button"><i class="fas fa-paper-plane"></i> Send Message</button>
                 </form>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- ===== FOOTER ===== -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-left">
-                    <p class="footer-text">&copy; <span id="year"></span> Your Name. All rights reserved.</p>
-                </div>
-                <div class="footer-right">
-                    <nav class="footer-nav">
-                        <a href="#home" class="footer-link">Home</a>
-                        <a href="#about" class="footer-link">About</a>
-                        <a href="#portfolio" class="footer-link">Portfolio</a>
-                        <a href="#contact" class="footer-link">Contact</a>
-                    </nav>
-                </div>
+                <p class="footer-text">&copy; <span id="year"></span> Syawal Maulana Akbari. All rights reserved.</p>
+                <nav class="footer-nav">
+                    <a href="#home" class="footer-link">Home</a>
+                    <a href="#about" class="footer-link">About</a>
+                    <a href="#resume" class="footer-link">Resume</a>
+                    <a href="#work-portfolio" class="footer-link">Projects</a>
+                    <a href="#contact" class="footer-link">Contact</a>
+                </nav>
             </div>
         </div>
     </footer>
 
+    <!-- ===== JAVASCRIPT ===== -->
     <script>
-          document.getElementById("year").textContent = new Date().getFullYear();
+        // ===== LOADING =====
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loading-screen').classList.add('fade-out');
+                setTimeout(() => document.getElementById('loading-screen').style.display = 'none', 600);
+            }, 800);
+        });
+
+        // ===== NAVBAR =====
+        const navbar = document.getElementById('navbar');
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // ===== SCROLL ANIMATIONS =====
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // ===== PROJECT FILTER =====
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+
+                const filter = this.dataset.filter;
+                document.querySelectorAll('.project-card').forEach(card => {
+                    if (filter === 'all' || card.dataset.category === filter) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // ===== CONTACT FORM =====
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = this.querySelector('.submit-button');
+            const original = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            btn.disabled = true;
+            setTimeout(() => {
+                btn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
+                btn.style.background = '#22c55e';
+                this.reset();
+                setTimeout(() => {
+                    btn.innerHTML = original;
+                    btn.style.background = '';
+                    btn.disabled = false;
+                }, 2500);
+            }, 2000);
+        });
+
+        // ===== YEAR =====
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // ===== SMOOTH SCROLL =====
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
     </script>
-    <script src="script.js"></script>
+
 </body>
 </html>
