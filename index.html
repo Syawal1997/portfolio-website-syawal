@@ -1959,6 +1959,61 @@ PROJECTS
             }, 2000);
         });
 
+        // ===== CHART 5: USD/IDR Exchange Rate & Macro Analysis =====
+Plotly.newPlot('chartForex', [{
+    x: ['2010', '2012', '2014', '2016', '2018', '2020', '2022', '2024', '2026'],
+    y: [9000, 9500, 12000, 13500, 14500, 15000, 15500, 16000, 16500],
+    type: 'scatter',
+    mode: 'lines+markers',
+    line: { color: '#3b82f6', width: 3 },
+    marker: { size: 8 },
+    name: 'USD/IDR Exchange Rate',
+    yaxis: 'y'
+}, {
+    x: ['2010', '2012', '2014', '2016', '2018', '2020', '2022', '2024', '2026'],
+    y: [6.5, 5.75, 7.5, 6.5, 6.0, 4.0, 5.5, 6.0, 5.75],
+    type: 'scatter',
+    mode: 'lines+markers',
+    line: { color: '#ef4444', width: 3, dash: 'dash' },
+    marker: { size: 8 },
+    name: 'BI Rate (%)',
+    yaxis: 'y2'
+}, {
+    x: ['2010', '2012', '2014', '2016', '2018', '2020', '2022', '2024', '2026'],
+    y: [0.11, 0.5, 0.25, 0.5, 2.5, 0.25, 4.5, 5.5, 4.5],
+    type: 'scatter',
+    mode: 'lines+markers',
+    line: { color: '#f59e0b', width: 3, dash: 'dot' },
+    marker: { size: 8 },
+    name: 'US Fed Rate (%)',
+    yaxis: 'y2'
+}], {
+    title: '📈 USD/IDR Exchange Rate vs Interest Rates (2010-2026)',
+    xaxis: { title: 'Year' },
+    yaxis: { title: 'USD/IDR Rate', range: [8000, 18000] },
+    yaxis2: { title: 'Interest Rate (%)', overlaying: 'y', side: 'right', range: [0, 8] },
+    margin: { l: 60, r: 70, t: 60, b: 50 },
+    template: 'plotly_white',
+    legend: { x: 0.02, y: 0.98 },
+    hovermode: 'x unified'
+});
+
+// ===== CHART 6: Global Trade Analytics =====
+Plotly.newPlot('chartTrade', [{
+    x: ['2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025'],
+    y: [8200, 8900, 9500, 9200, 10100, 11200, 9800, 10500, 11800, 12500, 14200],
+    type: 'bar',
+    marker: { color: ['#93c5fd', '#60a5fa', '#3b82f6', '#2563eb', '#1d4ed8', '#1e40af', '#1e3a5f', '#172554', '#93c5fd', '#60a5fa', '#3b82f6'] },
+    name: 'Export Value (IDR Trillion)'
+}], {
+    title: '🌍 Indonesia Export Performance (2015-2025)',
+    xaxis: { title: 'Year' },
+    yaxis: { title: 'Export Value (IDR Trillion)', range: [0, 16000] },
+    margin: { l: 60, r: 30, t: 60, b: 50 },
+    template: 'plotly_white',
+    hovermode: 'x unified'
+});
+
         // ===== YEAR =====
         document.getElementById('year').textContent = new Date().getFullYear();
 
