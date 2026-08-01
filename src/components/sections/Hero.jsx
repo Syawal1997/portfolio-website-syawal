@@ -1,5 +1,4 @@
 import React from 'react';
-import { ArrowRight } from 'lucide-react';
 
 const Hero = () => {
   return (
@@ -38,13 +37,19 @@ const Hero = () => {
                 href="#resume"
                 className="bg-navy text-white px-5 py-2.5 md:px-6 md:py-3 rounded-full text-sm md:text-base font-semibold hover:bg-navy-light transition-all duration-300 shadow-lg shadow-navy/20 flex items-center gap-2"
               >
-                <i className="fas fa-file-alt"></i> View Resume
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                View Resume
               </a>
               <a
                 href="#contact"
                 className="bg-primary text-white px-5 py-2.5 md:px-6 md:py-3 rounded-full text-sm md:text-base font-semibold hover:bg-primary-dark transition-all duration-300 shadow-lg shadow-primary/25 flex items-center gap-2"
               >
-                <i className="fas fa-paper-plane"></i> Let's Connect
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                </svg>
+                Let's Connect
               </a>
             </div>
 
@@ -55,7 +60,7 @@ const Hero = () => {
               <span className="bg-neutral-100 text-neutral-600 px-2.5 py-1 md:px-3 md:py-1.5 rounded-full text-xs md:text-sm font-medium">📈 SQL</span>
               <span className="bg-neutral-100 text-neutral-600 px-2.5 py-1 md:px-3 md:py-1.5 rounded-full text-xs md:text-sm font-medium">📉 Google Analytics</span>
               <span className="bg-neutral-100 text-neutral-600 px-2.5 py-1 md:px-3 md:py-1.5 rounded-full text-xs md:text-sm font-medium">⚙️ Power BI</span>
-              <span className="bg-neutral-100 text-neutral-600 px-2.5 py-1 md:px-3 md:py-1.5 rounded-full text-xs md:text-sm font-medium">🧠 ML</span>
+              <span className="bg-neutral-100 text-neutral-600 px-2.5 py-1 md:px-3 md:py-1.5 rounded-full text-xs md:text-sm font-medium">🧠 Machine Learning</span>
               <span className="bg-neutral-100 text-neutral-600 px-2.5 py-1 md:px-3 md:py-1.5 rounded-full text-xs md:text-sm font-medium">📋 Google Sheets</span>
               <span className="bg-neutral-100 text-neutral-600 px-2.5 py-1 md:px-3 md:py-1.5 rounded-full text-xs md:text-sm font-medium">📦 ETL</span>
             </div>
