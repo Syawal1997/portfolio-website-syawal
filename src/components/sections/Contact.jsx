@@ -69,4 +69,105 @@ const Contact = () => {
                 </div>
               </div>
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-primary/10 rounded-full flex
+                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary">
+                  <Linkedin size={24} />
+                </div>
+                <div>
+                  <p className="text-sm text-neutral-500">LinkedIn</p>
+                  <a
+                    href="https://linkedin.com/in/syawal-maulana-akbari-460277151"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-navy hover:text-primary transition-colors"
+                  >
+                    syawal-maulana-akbari
+                  </a>
+                </div>
+              </div>
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary">
+                  <Github size={24} />
+                </div>
+                <div>
+                  <p className="text-sm text-neutral-500">GitHub</p>
+                  <a
+                    href="https://github.com/Syawal1997"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-navy hover:text-primary transition-colors"
+                  >
+                    Syawal1997
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Contact Form */}
+          <form onSubmit={handleSubmit} className="space-y-6" data-aos="fade-left">
+            <div>
+              <label className="block text-sm font-medium text-navy mb-1.5">Full Name</label>
+              <input
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+                className="w-full px-4 py-3 rounded-xl border border-neutral-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                placeholder="Your name"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-navy mb-1.5">Email Address</label>
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+                className="w-full px-4 py-3 rounded-xl border border-neutral-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                placeholder="you@example.com"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-navy mb-1.5">Subject</label>
+              <input
+                type="text"
+                name="subject"
+                value={formData.subject}
+                onChange={handleChange}
+                required
+                className="w-full px-4 py-3 rounded-xl border border-neutral-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                placeholder="Project discussion"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-navy mb-1.5">Message</label>
+              <textarea
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                required
+                rows="5"
+                className="w-full px-4 py-3 rounded-xl border border-neutral-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all resize-none"
+                placeholder="Tell me about your project..."
+              ></textarea>
+            </div>
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="w-full bg-primary text-white py-3.5 rounded-xl font-semibold hover:bg-primary-dark transition-all duration-300 shadow-lg shadow-primary/25 hover:shadow-primary/40 disabled:opacity-70 disabled:cursor-not-allowed"
+            >
+              {isSubmitting ? 'Sending...' : 'Send Message'}
+            </button>
+            {submitStatus === 'success' && (
+              <p className="text-green-600 text-center font-medium">✅ Message sent successfully!</p>
+            )}
+          </form>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Contact;
