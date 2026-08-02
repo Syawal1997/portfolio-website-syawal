@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <meta name="description" content="Syawal Maulana Akbari - Data Analyst Portfolio. Expert in data visualization, predictive analytics, and business intelligence.">
     <title>Syawal Maulana Akbari | Data Analyst Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -84,7 +84,7 @@
             left: 0;
             right: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.88);
+            background: rgba(255, 255, 255, 0.92);
             backdrop-filter: blur(16px) saturate(180%);
             -webkit-backdrop-filter: blur(16px) saturate(180%);
             z-index: 1000;
@@ -105,6 +105,7 @@
             justify-content: space-between;
             align-items: center;
             width: 100%;
+            position: relative;
         }
 
         .nav-logo {
@@ -116,6 +117,7 @@
             display: flex;
             align-items: center;
             gap: 6px;
+            z-index: 1002;
         }
 
         .nav-logo .logo-accent {
@@ -152,6 +154,7 @@
             padding: 0.4rem 0.85rem;
             border-radius: 8px;
             position: relative;
+            white-space: nowrap;
         }
 
         .nav-link::after {
@@ -197,6 +200,7 @@
             display: none !important;
         }
 
+        /* ===== HAMBURGER ===== */
         .hamburger {
             display: none;
             flex-direction: column;
@@ -204,14 +208,21 @@
             gap: 5px;
             background: none;
             border: none;
-            padding: 6px 8px;
+            padding: 8px 10px;
             border-radius: 10px;
             transition: background 0.2s;
             z-index: 1002;
+            position: relative;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
         }
 
         .hamburger:hover {
             background: rgba(0, 0, 0, 0.04);
+        }
+
+        .hamburger:active {
+            transform: scale(0.92);
         }
 
         .hamburger .bar {
@@ -221,6 +232,7 @@
             border-radius: 4px;
             transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             display: block;
+            transform-origin: center;
         }
 
         .hamburger.active .bar:nth-child(2) {
@@ -234,6 +246,7 @@
             transform: translateY(-7.5px) rotate(-45deg);
         }
 
+        /* ===== NAV OVERLAY ===== */
         .nav-overlay {
             display: none;
             position: fixed;
@@ -241,25 +254,31 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(15, 23, 42, 0.3);
+            background: rgba(15, 23, 42, 0.35);
             backdrop-filter: blur(4px);
             -webkit-backdrop-filter: blur(4px);
             z-index: 999;
             opacity: 0;
             transition: opacity 0.3s ease;
         }
+
         .nav-overlay.active {
             display: block;
             opacity: 1;
         }
 
-        @media (max-width: 768px) {
+        /* ===== MOBILE MENU ===== */
+        @media (max-width: 992px) {
+            .hamburger {
+                display: flex !important;
+            }
+
             .nav-links {
                 position: fixed;
                 top: 0;
                 right: -100%;
                 width: 80%;
-                max-width: 320px;
+                max-width: 340px;
                 height: 100vh;
                 background: #ffffff;
                 flex-direction: column;
@@ -271,35 +290,165 @@
                 box-shadow: -8px 0 40px rgba(0, 0, 0, 0.08);
                 z-index: 1001;
                 overflow-y: auto;
+                border-radius: 0;
             }
+
             .nav-links.active {
                 right: 0;
             }
+
             .nav-link {
                 font-size: 1rem;
-                padding: 0.7rem 1rem;
+                padding: 0.75rem 1rem;
                 border-radius: 10px;
+                white-space: normal;
+                text-align: left;
+                width: 100%;
             }
+
             .nav-link::after {
                 display: none;
             }
+
             .nav-cta {
                 text-align: center;
                 margin-top: 0.5rem;
+                padding: 0.75rem 1rem !important;
+                border-radius: 10px !important;
             }
-            .hamburger {
-                display: flex;
-            }
+
             .nav-overlay.active {
                 display: block;
+            }
+
+            /* Close button inside mobile menu */
+            .nav-close-btn {
+                display: flex !important;
+                position: absolute;
+                top: 16px;
+                right: 16px;
+                background: rgba(0, 0, 0, 0.05);
+                border: none;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                font-size: 1.4rem;
+                color: #0f172a;
+                cursor: pointer;
+                align-items: center;
+                justify-content: center;
+                transition: background 0.2s;
+                touch-action: manipulation;
+            }
+
+            .nav-close-btn:hover {
+                background: rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-close-btn:active {
+                transform: scale(0.9);
             }
         }
 
         @media (max-width: 480px) {
-            body { padding-top: 62px; }
-            .navbar { height: 62px; }
-            .nav-logo { font-size: 0.95rem; }
-            .nav-links { padding: 2rem 1.25rem; }
+            body {
+                padding-top: 60px;
+            }
+
+            .navbar {
+                height: 60px;
+            }
+
+            .nav-logo {
+                font-size: 0.9rem;
+            }
+
+            .nav-logo .logo-dot {
+                width: 6px;
+                height: 6px;
+            }
+
+            .nav-links {
+                padding: 2rem 1.25rem;
+                max-width: 100%;
+                width: 85%;
+            }
+
+            .nav-link {
+                font-size: 0.95rem;
+                padding: 0.65rem 0.9rem;
+            }
+
+            .nav-close-btn {
+                top: 12px;
+                right: 12px;
+                width: 36px;
+                height: 36px;
+                font-size: 1.2rem;
+            }
+
+            .hamburger {
+                padding: 6px 8px;
+                gap: 4px;
+            }
+
+            .hamburger .bar {
+                width: 20px;
+                height: 2px;
+            }
+
+            .hamburger.active .bar:nth-child(1) {
+                transform: translateY(6px) rotate(45deg);
+            }
+            .hamburger.active .bar:nth-child(3) {
+                transform: translateY(-6px) rotate(-45deg);
+            }
+        }
+
+        @media (max-width: 380px) {
+            .nav-container {
+                padding: 0 0.875rem;
+            }
+
+            .nav-logo {
+                font-size: 0.8rem;
+            }
+
+            .nav-links {
+                padding: 1.5rem 1rem;
+                width: 90%;
+            }
+
+            .nav-link {
+                font-size: 0.85rem;
+                padding: 0.5rem 0.75rem;
+            }
+
+            .hamburger .bar {
+                width: 17px;
+                height: 1.8px;
+            }
+        }
+
+        @media (max-height: 500px) and (orientation: landscape) {
+            .nav-links {
+                padding: 1.5rem 1.25rem;
+                justify-content: flex-start;
+                padding-top: 2.5rem;
+            }
+
+            .nav-link {
+                padding: 0.4rem 0.9rem;
+                font-size: 0.85rem;
+            }
+
+            .nav-close-btn {
+                top: 8px;
+                right: 8px;
+                width: 32px;
+                height: 32px;
+                font-size: 1rem;
+            }
         }
 
         /* ============================================================
@@ -463,6 +612,7 @@
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             border: none;
             cursor: pointer;
+            touch-action: manipulation;
         }
 
         .cta-button-primary {
@@ -581,15 +731,17 @@
             .hero-description { margin-left: auto; margin-right: auto; }
             .hero-buttons { justify-content: center; }
             .hero-image img { max-width: 220px; }
-            .hero-stats { gap: 1.5rem; flex-wrap: wrap; }
+            .hero-stats { gap: 1.5rem; flex-wrap: wrap; padding: 0.75rem 1rem; }
             .hero::before { display: none; }
         }
 
         @media (max-width: 480px) {
             .hero-text h1 { font-size: 2rem; }
             .hero-image img { max-width: 180px; }
-            .hero-stats { padding: 0.75rem 1rem; gap: 1rem; }
+            .hero-stats { gap: 1rem; }
             .stat-item .number { font-size: 1.4rem; }
+            .hero-buttons { flex-direction: column; align-items: center; }
+            .hero-buttons .cta-button { width: 100%; max-width: 280px; justify-content: center; }
         }
 
         /* ===== ABOUT ===== */
@@ -653,7 +805,7 @@
         }
 
         @media (max-width: 768px) {
-            .about-grid { grid-template-columns: 1fr; }
+            .about-grid { grid-template-columns: 1fr; gap: 1.5rem; }
         }
 
         /* ===== RESUME ===== */
@@ -749,7 +901,8 @@
         }
 
         @media (max-width: 768px) {
-            .resume-grid { grid-template-columns: 1fr; }
+            .resume-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+            .resume-item { padding: 1rem 1.25rem; }
         }
 
         /* ===== SKILLS ===== */
@@ -820,6 +973,16 @@
 
         .skill-item.visible .skill-bar .fill {
             width: var(--level);
+        }
+
+        @media (max-width: 480px) {
+            .skills-grid {
+                grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+                gap: 0.75rem;
+            }
+            .skill-item { padding: 1rem 0.3rem; }
+            .skill-item .skill-icon { font-size: 1.8rem; }
+            .skill-item .skill-name { font-size: 0.75rem; }
         }
 
         /* ===== PROJECTS ===== */
@@ -918,6 +1081,15 @@
         .project-card .project-link:hover {
             gap: 10px;
             text-decoration: underline;
+        }
+
+        @media (max-width: 480px) {
+            .project-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .project-card { padding: 1.25rem; }
+            .project-card h3 { font-size: 0.95rem; }
         }
 
         /* ===== DASHBOARDS ===== */
@@ -1030,8 +1202,16 @@
         }
 
         @media (max-width: 768px) {
-            .dashboard-grid { grid-template-columns: 1fr; }
-            .project-grid { grid-template-columns: 1fr; }
+            .dashboard-grid { grid-template-columns: 1fr; gap: 1rem; }
+            .dashboard-card { padding: 1rem; }
+            .dashboard-framework { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 480px) {
+            .dashboard-framework { grid-template-columns: 1fr; }
+            .chart-container { height: 170px; }
+            .dashboard-card .dashboard-header h3 { font-size: 0.9rem; }
+            .framework-item .value { font-size: 0.7rem; }
         }
 
         /* ===== TESTIMONIALS (Carousel) ===== */
@@ -1138,6 +1318,7 @@
             align-items: center;
             justify-content: center;
             font-size: 0.9rem;
+            touch-action: manipulation;
         }
 
         .testimonial-btn:hover {
@@ -1145,6 +1326,10 @@
             color: #fff;
             border-color: #3b82f6;
             transform: scale(1.05);
+        }
+
+        .testimonial-btn:active {
+            transform: scale(0.92);
         }
 
         .testimonial-dots {
@@ -1163,6 +1348,7 @@
             cursor: pointer;
             transition: all 0.3s ease;
             padding: 0;
+            touch-action: manipulation;
         }
 
         .testimonial-dot.active {
@@ -1171,8 +1357,9 @@
         }
 
         @media (max-width: 480px) {
-            .testimonial-card { padding: 1.25rem; }
+            .testimonial-card { padding: 1.25rem; margin: 0; }
             .testimonial-text { font-size: 0.9rem; }
+            .testimonial-btn { width: 36px; height: 36px; font-size: 0.8rem; }
         }
 
         /* ===== HIRE ME SECTION ===== */
@@ -1248,8 +1435,16 @@
         }
 
         @media (max-width: 480px) {
-            .hire-section { padding: 2rem 1.25rem; }
+            .hire-section {
+                padding: 2rem 1.25rem;
+                border-radius: 16px;
+                margin: 0 0.5rem;
+            }
             .hire-section h2 { font-size: 1.5rem; }
+            .hire-section .hire-buttons .cta-button {
+                width: 100%;
+                justify-content: center;
+            }
         }
 
         /* ===== CONTACT ===== */
@@ -1349,6 +1544,7 @@
             cursor: pointer;
             transition: all 0.3s ease;
             width: 100%;
+            touch-action: manipulation;
         }
         .submit-button:hover {
             background: #2563eb;
@@ -1360,9 +1556,15 @@
         }
 
         @media (max-width: 768px) {
-            .contact-content { grid-template-columns: 1fr; }
+            .contact-content { grid-template-columns: 1fr; gap: 2rem; }
             .contact-info .section-title { text-align: center; }
             .contact-info .section-title::after { margin: 0.5rem auto 0; }
+            .contact-form { padding: 1.25rem; }
+        }
+
+        @media (max-width: 480px) {
+            .contact-form { padding: 1rem; }
+            .form-input, .form-textarea { font-size: 0.9rem; padding: 0.5rem 0.75rem; }
         }
 
         /* ===== FOOTER ===== */
@@ -1432,6 +1634,13 @@
                 text-align: center;
                 gap: 1.25rem;
             }
+            .footer-nav { justify-content: center; }
+        }
+
+        @media (max-width: 480px) {
+            .footer { padding: 1.5rem 0; }
+            .footer-text { font-size: 0.75rem; }
+            .footer-link { font-size: 0.75rem; }
         }
 
         /* ===== FLOATING HIRE ME BUTTON ===== */
@@ -1439,7 +1648,7 @@
             position: fixed;
             bottom: 2rem;
             right: 2rem;
-            z-index: 999;
+            z-index: 998;
             background: #3b82f6;
             color: #fff;
             border: none;
@@ -1455,12 +1664,17 @@
             gap: 8px;
             text-decoration: none;
             color: #fff;
+            touch-action: manipulation;
         }
 
         .floating-hire:hover {
             transform: translateY(-4px) scale(1.02);
             box-shadow: 0 8px 32px rgba(59, 130, 246, 0.5);
             background: #2563eb;
+        }
+
+        .floating-hire:active {
+            transform: scale(0.95);
         }
 
         .floating-hire .pulse-ring {
@@ -1478,10 +1692,21 @@
                 right: 1rem;
                 padding: 0.6rem 1.2rem;
                 font-size: 0.8rem;
+                border-radius: 40px;
             }
             .floating-hire .pulse-ring {
                 width: 8px;
                 height: 8px;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .floating-hire {
+                padding: 0.5rem 1rem;
+                font-size: 0.7rem;
+                gap: 4px;
+                bottom: 0.75rem;
+                right: 0.75rem;
             }
         }
     </style>
@@ -1510,6 +1735,9 @@
                 <li><a href="#dashboards" class="nav-link">Dashboards</a></li>
                 <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
                 <li><a href="#contact" class="nav-link nav-cta">Hire Me</a></li>
+                <button class="nav-close-btn" id="navCloseBtn" aria-label="Close menu">
+                    <i class="fas fa-times"></i>
+                </button>
             </ul>
             <button class="hamburger" id="hamburger" aria-label="Toggle menu">
                 <span class="bar"></span>
@@ -2177,6 +2405,7 @@
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.getElementById('nav-links');
         const overlay = document.getElementById('navOverlay');
+        const closeBtn = document.getElementById('navCloseBtn');
         const floatingHire = document.getElementById('floatingHire');
 
         function toggleMenu() {
@@ -2186,13 +2415,36 @@
             document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
         }
 
-        hamburger.addEventListener('click', toggleMenu);
-        overlay.addEventListener('click', toggleMenu);
+        function closeMenu() {
+            if (navLinks.classList.contains('active')) {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
 
+        // Event listeners
+        hamburger.addEventListener('click', toggleMenu);
+        hamburger.addEventListener('touchstart', function(e) {
+            // Prevent double-tap zoom on mobile
+            e.preventDefault();
+            toggleMenu();
+        }, { passive: false });
+
+        closeBtn.addEventListener('click', closeMenu);
+        overlay.addEventListener('click', closeMenu);
+
+        // Close menu when a link is clicked
         document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                if (navLinks.classList.contains('active')) toggleMenu();
-            });
+            link.addEventListener('click', closeMenu);
+        });
+
+        // Close menu on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeMenu();
+            }
         });
 
         // ===== NAVBAR SCROLL & ACTIVE LINK =====
@@ -2219,9 +2471,11 @@
             if (window.scrollY > 300) {
                 floatingHire.style.opacity = '1';
                 floatingHire.style.transform = 'translateY(0)';
+                floatingHire.style.pointerEvents = 'auto';
             } else {
                 floatingHire.style.opacity = '0';
                 floatingHire.style.transform = 'translateY(20px)';
+                floatingHire.style.pointerEvents = 'none';
             }
         });
 
@@ -2229,6 +2483,7 @@
         floatingHire.style.opacity = '0';
         floatingHire.style.transform = 'translateY(20px)';
         floatingHire.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+        floatingHire.style.pointerEvents = 'none';
 
         // ===== SCROLL ANIMATIONS =====
         const observer = new IntersectionObserver((entries) => {
@@ -2261,13 +2516,19 @@
 
         let currentIndex = 0;
         const totalCards = cards.length;
+        let autoplayInterval = null;
 
         // Create dots
+        dotsContainer.innerHTML = '';
         for (let i = 0; i < totalCards; i++) {
             const dot = document.createElement('button');
             dot.className = 'testimonial-dot' + (i === 0 ? ' active' : '');
             dot.setAttribute('data-index', i);
             dot.addEventListener('click', () => goTo(i));
+            dot.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                goTo(i);
+            }, { passive: false });
             dotsContainer.appendChild(dot);
         }
 
@@ -2281,6 +2542,7 @@
         function goTo(index) {
             currentIndex = (index + totalCards) % totalCards;
             updateCarousel();
+            resetAutoplay();
         }
 
         function next() {
@@ -2291,35 +2553,67 @@
             goTo(currentIndex - 1);
         }
 
-        nextBtn.addEventListener('click', next);
-        prevBtn.addEventListener('click', prev);
+        function startAutoplay() {
+            if (autoplayInterval) clearInterval(autoplayInterval);
+            autoplayInterval = setInterval(next, 5000);
+        }
 
-        // Auto-play
-        let autoplayInterval = setInterval(next, 5000);
+        function resetAutoplay() {
+            if (autoplayInterval) {
+                clearInterval(autoplayInterval);
+                startAutoplay();
+            }
+        }
+
+        nextBtn.addEventListener('click', next);
+        nextBtn.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            next();
+        }, { passive: false });
+
+        prevBtn.addEventListener('click', prev);
+        prevBtn.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            prev();
+        }, { passive: false });
+
+        // Start autoplay
+        startAutoplay();
 
         // Pause on hover
         const wrapper = document.querySelector('.testimonials-wrapper');
-        wrapper.addEventListener('mouseenter', () => clearInterval(autoplayInterval));
-        wrapper.addEventListener('mouseleave', () => {
-            autoplayInterval = setInterval(next, 5000);
+        wrapper.addEventListener('mouseenter', () => {
+            if (autoplayInterval) clearInterval(autoplayInterval);
         });
+        wrapper.addEventListener('mouseleave', startAutoplay);
 
         // Touch support for mobile
         let touchStartX = 0;
         let touchEndX = 0;
+        let isSwiping = false;
 
         wrapper.addEventListener('touchstart', (e) => {
             touchStartX = e.changedTouches[0].screenX;
-        });
+            isSwiping = true;
+        }, { passive: true });
+
+        wrapper.addEventListener('touchmove', (e) => {
+            // Prevent page scroll while swiping carousel
+            if (isSwiping) {
+                e.preventDefault();
+            }
+        }, { passive: false });
 
         wrapper.addEventListener('touchend', (e) => {
+            if (!isSwiping) return;
             touchEndX = e.changedTouches[0].screenX;
             const diff = touchStartX - touchEndX;
             if (Math.abs(diff) > 30) {
                 if (diff > 0) next();
                 else prev();
             }
-        });
+            isSwiping = false;
+        }, { passive: true });
 
         // ===== YEAR =====
         document.getElementById('year').textContent = new Date().getFullYear();
@@ -2330,6 +2624,7 @@
                 e.preventDefault();
                 const target = document.querySelector(anchor.getAttribute('href'));
                 if (target) {
+                    closeMenu();
                     window.scrollTo({
                         top: target.offsetTop - 70,
                         behavior: 'smooth'
@@ -2339,7 +2634,7 @@
         });
 
         // ============================================================
-        // PLOTLY CHARTS (same as before, kept for brevity)
+        // PLOTLY CHARTS
         // ============================================================
 
         // Chart 1: E-Commerce
